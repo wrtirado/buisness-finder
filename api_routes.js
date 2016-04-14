@@ -6,5 +6,9 @@ var
       .get(ctrl.mapiCtrl.getAll)
       .post(ctrl.mapiCtrl.create)
 
+  apiRouter.route('/businesses/:id')
+      .get(ctrl.mapiCtrl.getSingle)
+      .put(ctrl.mapiCtrl.update)
+      .delete(ctrl.mapiCtrl.destroy)
 
 module.exports = apiRoutes
