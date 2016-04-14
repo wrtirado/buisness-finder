@@ -12,9 +12,9 @@
         templateUrl: '/html/home.html',
         controller: "mapController as mapCtrl"
       })
-      .state('addBuisness', {
-        url: '/addBuisness',
-        templateUrl: '/html/addBuisness.html',
+      .state('addBusiness', {
+        url: '/addBusiness',
+        templateUrl: '/html/addBusiness.html',
         controller: "mapController as mapCtrl"
       })
       .state('map', {
