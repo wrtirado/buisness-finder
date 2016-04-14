@@ -23,9 +23,6 @@ module.export {
 
     getSingle: function(req, res) {
       var id = req.params.id
-        // var restaurant = restaurants.filter(function(r) {
-        //   return r._id == id
-        // })
       db.Business.findOne({_id: id}, function(err, business) {
         if (err) {
           res.json(err)
@@ -38,11 +35,19 @@ module.export {
     update: function(req, res) {
       console.log('3 - serverSide: update function gets called, runs the findOneAndUpdate method defined within express.')
       var id = req.params.id
-      db.Buisness.findOneAndUpdate({_id: id}, req.body, function(err, business) {
+      db.Business.findOneAndUpdate({_id: id}, req.body, function(err, business) {
         console.log('4 - serverSide: findOne express method is called, finds one business, and updates it.')
           res.json(business)
         })
+      },
+      destroy: function(req, res) {
+      console.log('3 - serverSide: running inside the mapigatorController.js file')
+      var id = req.params.id
+      db.Business.remove({_id: id}, function(err) {
+        if (err) res.json(err)
+        console.log("4 - serverSide: running inside the mapigatorController.js file --- Business Deleted!!!")
+        res.json({message: "Deleted Business!"})
       })
-    },
+    }
   }
 }
