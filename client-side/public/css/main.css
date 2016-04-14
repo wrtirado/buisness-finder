@@ -1,0 +1,49 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#map {
+  height: 100%;
+}
+
+.homeImg {
+  background-image: url("../img/mapigator-sign-in.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 93vh;
+  background-position: bottom;
+  position: relative;
+}
+
+.homeContent{
+  height: 35vh;
+  width: 100%;
+  position: absolute;
+  top: 53vh;
+  text-align: center;
+}
+
+.navHeight{
+  height: 7vh;
+}
+
+.emptyBox{
+  height: 20px;
+}
+
+h1 {
+  font-family: 'Raleway', sans-serif;
+}
+
+.addBP{
+  height: 93vh;
+}
+
+.bPHeader{
+  text-align: center;
+}
+
+.mapSettings{
+  height: 93vh;
+}
