@@ -5,8 +5,16 @@ var
 
 
 var businessSchema = new Schema({
-
-
+  name               : {type: String, required: true},
+  address            : {type: String, required: true},
+  glutenFree         : {type: Boolean, required: true},
+  dairyFree          : {type: Boolean, required: true},
+  vegan              : {type: Boolean, required: true},
+  handicapAccessible : {type: Boolean, required: true},
+  freeWifi           : {type: Boolean, required: true},
+  kidFriendly        : {type: Boolean, required: true},
+  description        : String,
+  createdAt          : {type: Date, Default: Date.now}
 })
 
 
