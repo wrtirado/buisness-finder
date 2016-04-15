@@ -9,13 +9,14 @@ var
   port        = process.env.PORT || 8080,
   apiRoutes   = require('./api_routes'),
   mongoose    = require('mongoose'),
-  databaseURL = 'mongodb://localhost:27017/testing'
+  databaseURL = 'mongodb://localhost:27017/testing',
+  mlabURI     = 'mongodb://wrtirado:Iamtheman23@ds011281.mlab.com:11281/mapigatordb'
 
 // var db = mongoose.createConnection("localhost", "mapigator-app")
   // connect to my database
-  mongoose.connect('mongodb://localhost:27017/testing', function(err) {
+  mongoose.connect(mlabURI, function(err) {
     if (err){
-      console.log(err)
+      console.log("db error: ", err)
     }
     else {console.log("connected to THE MONGODS")}
   })
