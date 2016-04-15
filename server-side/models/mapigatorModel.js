@@ -1,10 +1,7 @@
 var
   mongoose = require('mongoose'),
-  Shcema   = mongoose.Schema
-
-
-
-var businessSchema = new Schema({
+  Schema   = mongoose.Schema,
+ businessSchema = new Schema({
   name               : {type: String, required: true},
   address            : {type: String, required: true},
   glutenFree         : {type: Boolean, required: true},
@@ -14,10 +11,8 @@ var businessSchema = new Schema({
   freeWifi           : {type: Boolean, required: true},
   kidFriendly        : {type: Boolean, required: true},
   description        : String,
-  createdAt          : {type: Date, Default: Date.now}
+  createdAt          : {type: Date, default: Date.now}
 })
 
 
-module.exports = { // turning the variable restaurantSchema into a mongoose model, assigning it to the Restaurant key inside the module.exports object
-  Business : mongoose.model('Business', businessSchema)
-}
+module.exports = mongoose.model('test', businessSchema)// turning the variable restaurantSchema into a mongoose model, assigning it to the Restaurant key inside the module.exports object

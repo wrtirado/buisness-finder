@@ -9,12 +9,15 @@ var
   port        = process.env.PORT || 8080,
   apiRoutes   = require('./api_routes'),
   mongoose    = require('mongoose'),
-  databaseURL = "mongodb://localhost:27017/mapigator-app"
+  databaseURL = 'mongodb://localhost:27017/testing'
 
+// var db = mongoose.createConnection("localhost", "mapigator-app")
   // connect to my database
-  mongoose.connect(databaseURL, function(err) {
-    if (err) console.log(err)
-    console.log("connected to THE MONGODS")
+  mongoose.connect('mongodb://localhost:27017/testing', function(err) {
+    if (err){
+      console.log(err)
+    }
+    else {console.log("connected to THE MONGODS")}
   })
 
 
@@ -23,9 +26,11 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(cors())
 app.use(express.static(path.join(__dirname, './client-side/public')))
-app.use(apiRoutes)
+app.use('/api/v1', apiRoutes)
 
 app.listen(port, function(err){
-  if(err) console.log(err)
-  console.log('Server running on port: ', port);
+  if(err){
+    console.log(err)
+  }
+  else {console.log('Server running on port: ', port)}
 })

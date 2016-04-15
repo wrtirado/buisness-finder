@@ -1,9 +1,10 @@
-var db = require('../models/mapigatorModel')
-
-module.export {
+var Bizz = require('../models/mapigatorModel')
+module.exports = {
   mapiCtrl:{
     getAll: function(req, res) {
-      db.Business.find({}, function(err, business) {
+      console.log("getAll function gets called");
+      Bizz.find({}, function(err, business) {
+        console.log("finding all businesses");
         if (err) {
           res.json(err)
         } else {
@@ -12,10 +13,14 @@ module.export {
       })
     },
     create: function(req, res) {
-      console.log('3 - serverSide: running inside the mapigatorController.js file')
-      var business = new db.Business(req.body)
+      console.log('3 - serverSide: running inside the mapigatorController.js file', req.body)
+      var business = new Bizz(req.body)
+      console.log("Did the object create?", business)
       business.save(function(err, business) {
-        if (err) res.json(err)
+        if (err){
+          console.log(err)
+          res.json(err)
+        }
         console.log("4 - serverSide: running inside the mapigatorController.js file --- Business Created!!!")
         res.json(business)
       })
@@ -23,7 +28,7 @@ module.export {
 
     getSingle: function(req, res) {
       var id = req.params.id
-      db.Business.findOne({_id: id}, function(err, business) {
+      Bizz.findOne({_id: id}, function(err, business) {
         if (err) {
           res.json(err)
         } else {
@@ -35,7 +40,7 @@ module.export {
     update: function(req, res) {
       console.log('3 - serverSide: update function gets called, runs the findOneAndUpdate method defined within express.')
       var id = req.params.id
-      db.Business.findOneAndUpdate({_id: id}, req.body, function(err, business) {
+      Bizz.findOneAndUpdate({_id: id}, req.body, function(err, business) {
         console.log('4 - serverSide: findOne express method is called, finds one business, and updates it.')
           res.json(business)
         })
@@ -43,7 +48,7 @@ module.export {
       destroy: function(req, res) {
       console.log('3 - serverSide: running inside the mapigatorController.js file')
       var id = req.params.id
-      db.Business.remove({_id: id}, function(err) {
+      Bizz.remove({_id: id}, function(err) {
         if (err) res.json(err)
         console.log("4 - serverSide: running inside the mapigatorController.js file --- Business Deleted!!!")
         res.json({message: "Deleted Business!"})
