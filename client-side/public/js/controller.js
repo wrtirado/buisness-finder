@@ -4,7 +4,9 @@
 angular.module('controllers', [])
     .controller('mapController', mapController)
 
-function mapController(){
+mapController.$inject = ['businessFactory']
+
+function mapController(businessFactory){
   var mapCtrl = this
 
 
