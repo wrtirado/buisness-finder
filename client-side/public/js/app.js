@@ -14,7 +14,7 @@
       })
       .state('addBusiness', {
         url: '/addBusiness',
-        templateUrl: '/html/addBusiness.html',
+        templateUrl: '/html/addBusinesses.html',
         controller: "mapController as mapCtrl"
       })
       .state('map', {
