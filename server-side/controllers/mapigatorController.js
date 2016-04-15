@@ -42,7 +42,7 @@ module.exports = {
       var id = req.params.id
       Bizz.findOneAndUpdate({_id: id}, req.body, function(err, business) {
         console.log('4 - serverSide: findOne express method is called, finds one business, and updates it.')
-          res.json(business)
+          res.json({message: "Updated Business!"})
         })
       },
       destroy: function(req, res) {
