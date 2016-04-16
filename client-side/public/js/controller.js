@@ -17,7 +17,7 @@
 
       })
 
-    restCtrl.addBusiness = function(business) {
+    mapCtrl.addBusiness = function(business) {
       console.log('1 - Client: ng-click for adding a business: calling the funciton witing the front end factory')
       businessFactory.create(business)
         .then(function(res) {
@@ -25,14 +25,14 @@
         })
     }
 
-    restCtrl.showSingleBusiness = function(id) {
+    mapCtrl.showSingleBusiness = function(id) {
       businessFactory.getSingle(id)
         .then(function(res) {
           console.log("grabbed single record", res)
         })
     }
 
-    restCtrl.deleteBusiness = function(id) {
+    mapCtrl.deleteBusiness = function(id) {
       console.log('1 - Client: ng-click for deleting a business: calling the funciton witing the front end factory')
       businessFactory.destroy(id)
         .then(function(res) {
@@ -41,11 +41,11 @@
       businessFactory.getAll()
         .then(function(response) {
           console.log('6 - client: running inside the controller.js file --- end communication between client and server')
-          restCtrl.businesses = response.data
+          mapCtrl.businesses = response.data
         })
     }
 
-    restCtrl.updateBusiness = function(business) {
+    mapCtrl.updateBusiness = function(business) {
       console.log('1 - Client: ng-click for updating a business: calling the funciton witing the front end factory')
       businessFactory.update(business._id, business)
         .then(function(res) {
@@ -53,11 +53,11 @@
         })
     }
 
-    restCtrl.initModals = function() {
+    mapCtrl.initModals = function() {
       $('.modal-trigger').leanModal() // Initialize the modals
     }
-    restCtrl.setCurrentR = function(business) {
-      restCtrl.currentR = business // Initialize the modals
+    mapCtrl.setCurrentR = function(business) {
+      mapCtrl.currentR = business // Initialize the modals
     }
   }
 }());
