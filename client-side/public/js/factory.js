@@ -8,7 +8,7 @@
 
   function businessFactory($http) {
     var businessData = {},
-      apiUrl = 'http://morning-gorge-14837.herokuapp.com/api/v1/businesses'
+      apiUrl = 'https://morning-gorge-14837.herokuapp.com/api/v1/businesses'
 
     businessData.getAll = function() {
       console.log('getting all businesses')
