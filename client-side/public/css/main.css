@@ -46,4 +46,5 @@ h1 {
 
 .mapSettings{
   height: 93vh;
+  overflow-x: scroll;
 }
