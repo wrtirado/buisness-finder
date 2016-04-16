@@ -1,39 +1,40 @@
-;(function () {
+;
+(function() {
   'use strict'
   angular.module('myFactory', [])
     .factory('businessFactory', businessFactory)
 
   businessFactory.$inject = ['$http']
 
-  function businessFactory ($http) {
+  function businessFactory($http) {
     var businessData = {},
-        apiUrl = 'http://morning-gorge-14837.herokuapp.com/api/v1/businesses'
+      apiUrl = 'http://morning-gorge-14837.herokuapp.com/api/v1/businesses'
 
-    businessData.getAll = function () {
+    businessData.getAll = function() {
       console.log('getting all businesses')
       return $http.get(apiUrl)
     }
 
-    businessData.create = function (business) {
+    businessData.create = function(business) {
       console.log('2 - client: Calling the http verb \'post\', and as a result is crossing the divide over to the server side. More specifically, it is looking at where I defined the api_routes, and where this specific route is pointing within the mapigatorController!')
       var result = $http.post(apiUrl, business)
       console.log('5 - client: running inside the factory.js file')
       return result
     }
 
-    businessData.getSingle = function(id){
-      console.log('getting single business data:',id)
+    businessData.getSingle = function(id) {
+      console.log('getting single business data:', id)
       return $http.get(apiUrl + '/' + id)
     }
 
-    businessData.destroy = function(id){
+    businessData.destroy = function(id) {
       console.log('2 - client: Calling the http verb \'delete\', and as a result is crossing the divide over to the server side. More specifically, it is looking at where I defined the api_routes, and where this specific route is pointing within the mapigatorController!')
       var result = $http.delete(apiUrl + '/' + id)
       console.log('5 - client: running inside the factory.js file')
       return result
     }
 
-    businessData.update = function(id, business){
+    businessData.update = function(id, business) {
       console.log('2 - client: Calling the http verb \'put\', and as a result is crossing the divide over to the server side. More specifically, it is looking at where I defined the api_routes, and where this specific route is pointing within the mapigatorController!')
       var result = $http.put(apiUrl + '/' + id, business)
       console.log('6 - recieving the response from the res.send in the mapigatorController');
