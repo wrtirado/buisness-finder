@@ -11,7 +11,7 @@ var
   mongoose    = require('mongoose'),
   databaseURL = 'mongodb://localhost:27017/testing',
   mlabURI     = 'mongodb://wrtirado:Iamtheman23@ds011281.mlab.com:11281/mapigatordb'
-
+console.log(proces.env.PORT);
 // var db = mongoose.createConnection("localhost", "mapigator-app")
   // connect to my database
   mongoose.connect(mlabURI, function(err) {
