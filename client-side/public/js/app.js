@@ -1,6 +1,6 @@
 ;(function () {
   'use strict'
-  angular.module('mapigatorApp', ['controllers', 'ui.router'])
+  angular.module('mapigatorApp', ['controllers', 'ui.router', 'myFactory'])
     .config(routerConfig)
 
   routerConfig.$inject = ['$stateProvider', '$urlRouterProvider']
