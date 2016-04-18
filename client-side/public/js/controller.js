@@ -15,14 +15,7 @@
 
     mapCtrl.googleMapsUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-LboVyW-B4forwoDfDsVYNw8blYlEu0&callback=initMap"
 
-    mapCtrl.newBusiness = {
-      glutenFree : false,
-      dairyFree : false,
-      vegan : false,
-      handicapAccessible : false,
-      freeWifi : false,
-      kidFriendly : false,
-    }
+    mapCtrl.newBusiness = {}
 
     businessFactory.getAll()
       .then(function(response) {
@@ -75,64 +68,6 @@
     // }
 
     // functions for setting true and false of checkboxes
-    mapCtrl.glutenCheck = function(){
-      if (mapCtrl.newBusiness.glutenFree = false){
-        mapCtrl.newBusiness.glutenFree = true
-      }
-      else{
-        mapCtrl.newBusiness.glutenFree = false
-      }
-      return mapCtrl.newBusiness.glutenFree
-    }
 
-    mapCtrl.dairyCheck = function(){
-      if (mapCtrl.newBusiness.dairyFree = false){
-        mapCtrl.newBusiness.dairyFree = true
-      }
-      else{
-        mapCtrl.newBusiness.dairyFree = false
-      }
-      return mapCtrl.newBusiness.dairyFree
-    }
-
-    mapCtrl.veganCheck = function(){
-      if (mapCtrl.newBusiness.vegan = false){
-        mapCtrl.newBusiness.vegan = true
-      }
-      else{
-        mapCtrl.newBusiness.vegan = false
-      }
-      return mapCtrl.newBusiness.vegan
-    }
-
-    mapCtrl.handicapCheck = function(){
-      if (mapCtrl.newBusiness.handicapAccessible = false){
-        mapCtrl.newBusiness.handicapAccessible = true
-      }
-      else{
-        mapCtrl.newBusiness.handicapAccessible = false
-      }
-      return mapCtrl.newBusiness.handicapAccessible
-    }
-
-    mapCtrl.wifiCheck = function(){
-      if (mapCtrl.newBusiness.freeWifi = false){
-        mapCtrl.newBusiness.freeWifi = true
-      }
-      else{
-        mapCtrl.newBusiness.freeWifi = false
-      }
-      return mapCtrl.newBusiness.freeWifi
-    }
-
-    mapCtrl.kidCheck = function(){
-      if (mapCtrl.newBusiness.kidFriendly = false){
-        mapCtrl.newBusiness.kidFriendly = true
-      }
-      else{
-        mapCtrl.newBusiness.kidFriendly = false
-      }
-      return mapCtrl.newBusiness.kidFriendly
-    }
   }
 }());
