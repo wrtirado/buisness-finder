@@ -16,19 +16,19 @@ var
   // connect to my database
 
   // Local Connection
-  mongoose.connect(databaseURL, function(err) {
-    if (err){
-      console.log("db error: ", err)
-    }
-    else {console.log("connected to THE MONGODS")}
-  })
-  // Heroku Connection
-  // mongoose.connect(mlabURI, function(err) {
+  // mongoose.connect(databaseURL, function(err) {
   //   if (err){
   //     console.log("db error: ", err)
   //   }
   //   else {console.log("connected to THE MONGODS")}
   // })
+  // Heroku Connection
+  mongoose.connect(mlabURI, function(err) {
+    if (err){
+      console.log("db error: ", err)
+    }
+    else {console.log("connected to THE MONGODS")}
+  })
 
 
 app.use(logger('dev'))
