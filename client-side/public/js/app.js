@@ -22,6 +22,11 @@
         templateUrl: '/html/map.html',
         controller: "mapController as mapCtrl"
       })
+      .state('success', {
+        url: '/success',
+        templateUrl: '/html/addBusinessSuccess.html',
+        controller: "mapController as mapCtrl"
+      })
       $urlRouterProvider.otherwise('/')
   }
 }())

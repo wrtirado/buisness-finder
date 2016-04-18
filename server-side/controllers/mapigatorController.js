@@ -21,8 +21,10 @@ module.exports = {
           console.log(err)
           res.json(err)
         }
+        else {
         console.log("4 - serverSide: running inside the mapigatorController.js file --- Business Created!!!")
         res.json(business)
+      }
       })
     },
 

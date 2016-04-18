@@ -4,9 +4,9 @@
   angular.module('controllers', [])
     .controller('mapController', mapController)
 
-  mapController.$inject = ['businessFactory', 'NgMap']
+  mapController.$inject = ['businessFactory', 'NgMap', '$state']
 
-  function mapController(businessFactory, NgMap) {
+  function mapController(businessFactory, NgMap, $state) {
     var mapCtrl = this
 // Seting up ng-Map
     NgMap.getMap().then(function(map) {
@@ -29,6 +29,7 @@
       businessFactory.create(business)
         .then(function(res) {
           console.log('6 - client: running inside the controller.js file --- end communication between client and server', res)
+          $state.go('success')
         })
     }
 
