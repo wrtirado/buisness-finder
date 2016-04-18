@@ -1,5 +1,7 @@
 <!-- Google Maps API Key = " AIzaSyBO-LboVyW-B4forwoDfDsVYNw8blYlEu0 " -->
 <div class="row">
+
+  
   <div class="mapSettings col s3 green lighten-5">
     <h1>Filter Restaurants</h1>
     <div class="row">
@@ -20,7 +22,12 @@
     <a ui-sref="addBusiness" class="waves-effect waves-light btn-large">Submit New Business</a>
     <a ui-sref="home" class="waves-effect waves-light btn-large">Return To Home</a>
   </div>
-  <div class="col s9" id="map" style="height: 93vh;"></div>
+
+
+  <div map-lazy-load="https://maps.google.com/maps/api/js"
+  map-lazy-load-params="{{mapCtrl.googleMapsUrl}}">
+  <ng-map center="40.017064, -105.220111" zoom="17"></ng-map>
+</div>
 </div>
 
 
@@ -31,7 +38,7 @@
 
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   var map;
 
   function initMap() {
@@ -44,4 +51,4 @@
     });
   }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-LboVyW-B4forwoDfDsVYNw8blYlEu0&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-LboVyW-B4forwoDfDsVYNw8blYlEu0&callback=initMap"></script> -->

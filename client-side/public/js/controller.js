@@ -4,10 +4,16 @@
   angular.module('controllers', [])
     .controller('mapController', mapController)
 
-  mapController.$inject = ['businessFactory']
+  mapController.$inject = ['businessFactory', 'ngMap']
 
-  function mapController(businessFactory) {
+  function mapController(businessFactory, ngMap) {
     var mapCtrl = this
+// Seting up ng-Map
+    NgMap.getMap().then(function(map) {
+    console.log(map.getCenter());
+  });
+
+    mapCtrl.googleMapsUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-LboVyW-B4forwoDfDsVYNw8blYlEu0&callback=initMap"
 
     mapCtrl.newBusiness = {
       glutenFree : false,
