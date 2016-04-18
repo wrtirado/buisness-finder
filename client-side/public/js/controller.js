@@ -25,7 +25,7 @@
       })
 
     mapCtrl.addBusiness = function(business) {
-      console.log('1 - Client: ng-click for adding a business: calling the funciton witing the front end factory')
+      console.log('1 - Client: ng-click for adding a business: calling the funciton within the front end factory', business)
       businessFactory.create(business)
         .then(function(res) {
           console.log('6 - client: running inside the controller.js file --- end communication between client and server', res)

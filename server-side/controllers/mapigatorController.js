@@ -15,7 +15,7 @@ module.exports = {
     create: function(req, res) {
       console.log('3 - serverSide: running inside the mapigatorController.js file', req.body)
       var business = new Bizz(req.body)
-      console.log("Did the object create?", business)
+      console.log("3.1, business object gets passed into the Schema, and turns into - ", business)
       business.save(function(err, business) {
         if (err){
           console.log(err)
