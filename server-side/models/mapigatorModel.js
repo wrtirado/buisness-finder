@@ -1,9 +1,9 @@
 var
-  mongoose = require('mongoose'),
-  Schema   = mongoose.Schema,
- businessSchema = new Schema({
-  name               : {type: String, required: true},
-  address            : {type: String, required: true},
+  mongoose           = require('mongoose'),
+  Schema             = mongoose.Schema,
+  businessSchema     = new Schema({
+  name               : {type: String,  required: true},
+  address            : {type: String,  required: true},
   glutenFree         : {type: Boolean, required: true, default: false},
   dairyFree          : {type: Boolean, required: true, default: false},
   vegan              : {type: Boolean, required: true, default: false},
