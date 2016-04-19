@@ -15,7 +15,9 @@
 
     mapCtrl.googleMapsUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-LboVyW-B4forwoDfDsVYNw8blYlEu0&callback=initMap"
 
-    mapCtrl.newBusiness = {}
+    mapCtrl.newBusiness = {
+      options:[]
+    }
 
     businessFactory.getAll()
       .then(function(response) {
@@ -23,6 +25,19 @@
         mapCtrl.businesses = response.data
 
       })
+
+    mapCtrl.addOptions = function(event){
+      if(!event.target.checked){
+        console.log("Erasing Event")
+        mapCtrl.newBusiness.options.splice(mapCtrl.newBusiness.options.indexOf(event.target.name),1)
+        console.log("Erased",   mapCtrl.newBusiness.options)
+
+      }else{
+
+        console.log("Adding an option:", event.target.name)
+        mapCtrl.newBusiness.options.push(event.target.name)
+      }
+    }
 
     mapCtrl.addBusiness = function(business) {
       console.log('1 - Client: ng-click for adding a business: calling the funciton within the front end factory', business)
@@ -60,7 +75,6 @@
           console.log('7 - recieving the response from the http request end communication between client and server')
         })
     }
-
     // mapCtrl.initModals = function() {
     //   $('.modal-trigger').leanModal() // Initialize the modals
     // }

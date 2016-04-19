@@ -24,29 +24,29 @@
       <div class="row">
         <div class="col s2 offset-s2">
           <p>
-            <input ng-model="mapCtrl.newBusiness.glutenFree" type="checkbox" class="filled-in" name="Gluten Free" id="gluten-free" />
+            <input ng-click="mapCtrl.addOptions($event)" type="checkbox" class="filled-in" name="Gluten Free" id="gluten-free" />
             <label for="gluten-free">Gluten Free</label>
           </p>
           <p>
-            <input ng-model="mapCtrl.newBusiness.dairyFree" type="checkbox" class="filled-in" name="Dairy Free" id="dairy-free" />
+            <input  ng-click="mapCtrl.addOptions($event)" type="checkbox" class="filled-in" name="Dairy Free" id="dairy-free" />
             <label for="dairy-free">Dairy Free</label>
           </p>
           <p>
-            <input ng-model="mapCtrl.newBusiness.vegan" type="checkbox" class="filled-in" name="Vegan" id="vegan" />
+            <input ng-click="mapCtrl.addOptions($event)" type="checkbox" class="filled-in" name="Vegan" id="vegan" />
             <label for="vegan">Vegan</label>
           </p>
         </div>
         <div class="col s2 offset-s2">
           <p>
-            <input ng-model="mapCtrl.newBusiness.handicapAccessible" type="checkbox" class="filled-in" name="Handicap Accessible" id="handicap-accessible" />
+            <input ng-click="mapCtrl.addOptions($event)" type="checkbox" class="filled-in" name="Handicap Accessible" id="handicap-accessible" />
             <label for="handicap-accessible">Handicap Accessible</label>
           </p>
           <p>
-            <input ng-model="mapCtrl.newBusiness.freeWifi" type="checkbox" class="filled-in" name="Free WiFi" id="free-wifi" />
+            <input ng-click="mapCtrl.addOptions($event)" type="checkbox" class="filled-in" name="Free WiFi" id="free-wifi" />
             <label for="free-wifi">Free WiFi</label>
           </p>
           <p>
-            <input ng-model="mapCtrl.newBusiness.kidFriendly" type="checkbox" class="filled-in" name="Kid Friendly" id="kid-friendly" />
+            <input ng-click="mapCtrl.addOptions($event)" type="checkbox" class="filled-in" name="Kid Friendly" id="kid-friendly" />
             <label for="kid-friendly">Kid Friendly</label>
           </p>
         </div>
