@@ -3,15 +3,41 @@
 
 
   <div class="mapSettings col s3 green lighten-5">
-    <h1>Filter Restaurants</h1>
     <div class="row">
       <div class="col s12">
-        <input type="text" ng-model="bizzOptions" name="name" value="">
-        <div ng-repeat="bizz in mapCtrl.businesses" class="card green lighten-2">
+        <input placeholder="Filter Restaurants" type="text" ng-model="bizzOptions" name="name" value="">
+        <div>
+          <p>
+            <input checked="checked" ng-click="mapCtrl.includeOptions($event)" type="checkbox" class="filled-in" name="Gluten Free" id="gluten-free" />
+            <label for="gluten-free">Gluten Free</label>
+          </p>
+          <p>
+            <input checked="checked" ng-click="mapCtrl.includeOptions($event)" type="checkbox" class="filled-in" name="Dairy Free" id="dairy-free" />
+            <label for="dairy-free">Dairy Free</label>
+          </p>
+          <p>
+            <input checked="checked" ng-click="mapCtrl.includeOptions($event)" type="checkbox" class="filled-in" name="Vegan" id="vegan" />
+            <label for="vegan">Vegan</label>
+          </p>
+          <p>
+            <input checked="checked" ng-click="mapCtrl.includeOptions($event)" type="checkbox" class="filled-in" name="Handicap Accessible" id="handicap-accessible" />
+            <label for="handicap-accessible">Handicap Accessible</label>
+          </p>
+          <p>
+            <input checked="checked" ng-click="mapCtrl.includeOptions($event)" type="checkbox" class="filled-in" name="Free WiFi" id="free-wifi" />
+            <label for="free-wifi">Free WiFi</label>
+          </p>
+          <p>
+            <input checked="checked" ng-click="mapCtrl.includeOptions($event)" type="checkbox" class="filled-in" name="Kid Friendly" id="kid-friendly" />
+            <label for="kid-friendly">Kid Friendly</label>
+          </p>
+        </div>
+        <div ng-repeat="bizz in mapCtrl.businesses | filter: mapCtrl.businessFilter" class="card green lighten-2">
           <div class="card-content white-text">
             <span class="card-title">{{bizz.name}}</span>
             <h6>{{bizz.address}}</h6>
             <p>{{bizz.description}}</p>
+            <p>{{bizz.options}}</p>
 
           </div>
           <div class="card-action">
@@ -30,7 +56,6 @@
   <ng-map class="height: 97%;" center="40.017064, -105.220111" zoom="17"></ng-map>
 </div>
 </div>
-
 
 
 
