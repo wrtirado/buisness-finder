@@ -76,36 +76,42 @@
                 })
         }
 
-        mapCtrl.businessOptions = ['Gluten Free', 'Dairy Free', 'Vegan', 'Handicap Accessible', 'Free WiFi', 'Kid Friendly']
+        mapCtrl.userSelectedBusinessOptions = []
 
         mapCtrl.includeOptions = function(event) {
-            var i = $.inArray(event.target.name, mapCtrl.businessOptions);
+            var i = $.inArray(event.target.name, mapCtrl.userSelectedBusinessOptions)
             if (i > -1) {
-                console.log(mapCtrl.businessOptions)
-                mapCtrl.businessOptions.splice(i, 1);
+                mapCtrl.userSelectedBusinessOptions.splice(i, 1)
             } else {
-                console.log(mapCtrl.businessOptions)
-                mapCtrl.businessOptions.push(event.target.name);
+
+                mapCtrl.userSelectedBusinessOptions.push(event.target.name);
             }
+
         }
 
-        /* ************************************************************************** */
-        /* Portfolio Filter ******************************************************************* */
-        /* ************************************************************************** */
 
         mapCtrl.businessFilter = function(business) {
-            if (mapCtrl.businessOptions.length > 0) {
-                var optionsCheckCounter = 0
+            if (mapCtrl.userSelectedBusinessOptions.length > 0) {
+                var matchedOptionsInBizz = 0
                 for (var i = 0; i < business.options.length; i++) {
-                    if ($.inArray(business.options[i], mapCtrl.businessOptions) < 0) {
-                        optionsCheckCounter++
+                  // console.log("Array Check:"+business.options[i]+"Result: "+ $.inArray(business.options[i], mapCtrl.userSelectedBusinessOptions)+" Compare Array:"+ mapCtrl.userSelectedBusinessOptions);
+                    if ($.inArray(business.options[i], mapCtrl.userSelectedBusinessOptions) >= 0) {
+                        matchedOptionsInBizz++
                     }
                 }
-                if (optionsCheckCounter <= business.options.length && optionsCheckCounter > 0){
+                // console.log("OprionsCounter: "+ optionsCheckCounter + "business.length: "+  business.options.length);
+                // console.log("checked array",mapCtrl.businessOptions);
+                if (matchedOptionsInBizz >= mapCtrl.userSelectedBusinessOptions.length ){
                   return business
                 }
-                else {return}
+                else {
+                  return
+                }
+            }else{
+
+              return business
             }
+
         }
 
 
