@@ -13,14 +13,26 @@ apiRouter.route('/users')
     .get(ctrl.userCtrl.getAll)
 
 apiRouter.use(function(req, res, next) {
-    // this is going to run EVERY TIME someone goes to a url that starts with /api
-    // so we should probably check to see if they are logged in here
-    // We'll do that in the next lesson
-    // in the meantime, let's just console.log something, so we know it works
-    console.log("someone is visiting our API, we should check to see if they are logged in")
+  // 1 - let's check everywhere for the user's token
+  var token = req.body.token || req.params.token || req.headers['x-access-token']
 
-    // ...and then we'll let the request continue on to our app:
-    next()
+  //2 - If we find a token, we will use mySpecialSecret to try and decode it
+  //    - if it can't be decoded, send the user an error that they don't have the right token
+
+  if (token){
+    jwt.verify(token, secret, function(err, decoded){
+      if(err){
+        return res.status(403).send({success:false, message:"can't authenticate token"})
+      }
+      else {
+        req.decoded = decoded
+        next()
+      }
+    })
+  }
+  else{
+    return res.status(403).send({success: false, message: "no token provided"})
+  }
 })
 
 apiRouter.route('/businesses')

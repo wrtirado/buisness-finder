@@ -1,6 +1,16 @@
-var db = require('../models/mapigatorModel'),
-    jwt = require('jsonwebtoken'),
-    secret = "this is so secret"
+var db               = require('../models/mapigatorModel'),
+    jwt              = require('jsonwebtoken'),
+    secret           = "this is so secret"
+    geocoderProvider = 'google'
+    httpAdapter      = 'http'
+    geocoder         = require('node-geocoder')(geocoderProvider, httpAdapter)
+
+
+
+    geocoder.geocode('29 champs elysée paris', function(err, res) {
+        console.log(res);
+    })
+
 
 
 module.exports = {
@@ -10,7 +20,7 @@ module.exports = {
             db.Bizz.find({}, function(err, business) {
                 console.log("finding all businesses");
                 if (err) {
-                    res.json(err)
+                    console.log(err)
                 } else {
                     res.json(business)
                 }
@@ -25,6 +35,19 @@ module.exports = {
                     console.log(err)
                     res.json(err)
                 } else {
+                  geocoder.geocode(business.address, function(err, res) {
+                      if(err){
+                        consol.log(err)
+                      }
+                      else{
+                        db.Bizz.findOneAndUpdate({ _id: business._id}, { $set:{ lat: res.latitude, long: res.longitude}}, function(error, business2){
+                          if(error){
+                            console.log(error)
+                          }
+                          else{console.log("successfuly updated lat and long", business2)}
+                        })
+                      }
+                  })
                     console.log("4 - serverSide: running inside the mapigatorController.js file --- Business Created!!!")
                     res.json(business)
                 }

@@ -1,21 +1,26 @@
 var
   bcryptjs           = require('bcryptjs')
   mongoose           = require('mongoose'),
-  Schema             = mongoose.Schema,
-  businessSchema     = new Schema({
-  name               : {type: String,  required: true},
-  address            : {type: String,  required: true},
-  options            : [],
-  description        : String,
-  createdAt          : {type: Date, default: Date.now}
-}),
+  Schema             = mongoose.Schema
 
-    userSchema         = new Schema({
-    name      : {type: String, required: true},
-    email     : {type: String, required: true},
-    password  : {type: String, required: true},
-    createdAt : {type: Date,    default: Date.now}
+
+
+var businessSchema     = new Schema({
+    name               : {type: String,  required: true},
+    address            : {type: String,  required: true},
+    lat                : {type: String},
+    long               : {type: String},
+    options            : [],
+    description        : {type: String},
+    createdAt          : {type: Date, default: Date.now}
   })
+
+var userSchema = new Schema({
+    name       : {type: String, required: true},
+    email      : {type: String, required: true},
+    password   : {type: String, required: true},
+    createdAt  : {type: Date,    default: Date.now}
+})
 
 userSchema.pre('save', function(next){
     var user = this
