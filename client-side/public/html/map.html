@@ -5,6 +5,15 @@
   <div class="col s3 green lighten-5">
     <div class="row">
       <div class="col s12">
+        <div class="emptyBox"></div>
+        <div class="row">
+          <div class="col s6">
+            <a ui-sref="addBusiness" class="waves-effect waves-light btn-large"><h6>Submit New Business</h6></a>
+          </div>
+          <div class="col s6">
+            <a ui-sref="home" class="waves-effect waves-light btn-large"><h6>Return To Home</h6></a>
+          </div>
+        </div>
         <input placeholder="Filter Restaurants" type="text" ng-model="bizzText" name="name" value=""/>
         <div>
           <p>
@@ -46,8 +55,6 @@
         </div>
       </div>
     </div>
-    <a ui-sref="addBusiness" class="waves-effect waves-light btn-large">Submit New Business</a>
-    <a ui-sref="home" class="waves-effect waves-light btn-large">Return To Home</a>
   </div>
 
 
