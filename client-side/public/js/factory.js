@@ -8,7 +8,7 @@
 
   function businessFactory($http) {
     var businessData = {},
-      apiUrl = '/api/v1/businesses'
+      apiUrl = 'api/v1/businesses'
 
     businessData.getAll = function() {
       console.log('getting all businesses')
@@ -41,5 +41,18 @@
       return result
     }
     return businessData
+  }
+
+  // user factory for http requests
+  function userFactory($http) {
+    var userData = {},
+    apiUrl = 'api/v1/users'
+
+    userData.create = function(user) {
+      var result = $http.post(apiUrl, user)
+      return result
+    }
+
+    return userData
   }
 }())

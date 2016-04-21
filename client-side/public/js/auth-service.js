@@ -1,17 +1,18 @@
 (function() {
   'use strict';
   angular.module('authService', [])
-    .factory('Auth', function($http, $p, AuthToken){})
-    .factory('AuthInterceptor', function($q, AuthToken){})
-    .factory('AuthToken', function($window){})
+    .factory('Auth', Auth)
+    .factory('AuthInterceptor', AuthInterceptor)
+    .factory('AuthToken', AuthToken)
 
     function Auth($http, $q, AuthToken){
       var authFactory = {}
 
-      authFactory.login = function(name, email, password){
-        return $http.post('/api/v1/signIn', {name: name, email: email, password: password})
+      authFactory.login = function(email, password){
+        return $http.post('/api/v1/signIn', {email: email, password: password})
                 .then(function(data){
-                  AuthToken.setToken(data.token)
+                  console.log("Sign in data =====", data);
+                  AuthToken.setToken(data.data.token)
                   return data
                 })
       }
@@ -39,7 +40,7 @@
       return authFactory
     }
 
-    function AuthToken($q, AuthToken) {
+    function AuthToken($window) {
       var authTokenFactory = {}
 
         authTokenFactory.getToken = function(){
@@ -57,10 +58,10 @@
       return authTokenFactory
     }
 
-    function authInterceptorFactory ($window) {
+    function AuthInterceptor ($location, $q, AuthToken) {
       var AuthInterceptorFactory = {}
 
-      interceptorFactory.request = function(config){
+      AuthInterceptorFactory.request = function(config){
         var token = AuthToken.getToken()
 
         if(token){
@@ -68,7 +69,7 @@
         }
         return config
       }
-      interceptorFactory.responseError = function(response){
+      AuthInterceptorFactory.responseError = function(response){
         if(response.status == 403){
           $location.path('/')
         }

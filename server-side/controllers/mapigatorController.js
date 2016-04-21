@@ -5,14 +5,6 @@ var db               = require('../models/mapigatorModel'),
     httpAdapter      = 'http'
     geocoder         = require('node-geocoder')(geocoderProvider, httpAdapter)
 
-
-
-    geocoder.geocode('29 champs elysée paris', function(err, res) {
-        console.log(res);
-    })
-
-
-
 module.exports = {
     mapiCtrl: {
         getAll: function(req, res) {
@@ -99,8 +91,8 @@ module.exports = {
             user.save(function(err, user) {
                 if (err) {
                     console.log(err)
-                    res.json(err)
-                } else {
+                }
+                else {
                     res.json(user)
                 }
             })
@@ -117,17 +109,13 @@ module.exports = {
         },
         signIn: function(req, res) {
             console.log('Signing In')
-            db.User.findOne({
-                email: req.body.email
-            }, function(err, user) {
-                if (err) {
-                    res.jon(err)
-                }
+            db.User.findOne({email: req.body.email}, function(err, user) {
+                if (err) {res.json(err)}
                 // Check if user exists
                 if (user) {
                     if (user.checkPassword(req.body.password)) {
                         var token = jwt.sign({
-                            name: user.name,
+                            firstName: user.firstName,
                             email: user.email
                         },  secret, {
                             expiresInMinutes: 1440

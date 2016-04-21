@@ -48,6 +48,7 @@
                 })
         }
 
+
         mapCtrl.showSingleBusiness = function(id) {
             businessFactory.getSingle(id)
                 .then(function(res) {
@@ -111,18 +112,16 @@
 
               return business
             }
-
         }
+        // Begin functionality for the users schema
+        mapCtrl.newUser = {}
 
-
-        // mapCtrl.initModals = function() {
-        //   $('.modal-trigger').leanModal() // Initialize the modals
-        // }
-        // mapCtrl.setCurrentR = function(business) {
-        //   mapCtrl.currentR = business // Initialize the modals
-        // }
-
-        // functions for setting true and false of checkboxes
+        mapCtrl.addUser = function(user){
+          userFactory.create(user)
+              .then(function(res){
+                $state.go('')
+              })
+        }
 
     }
 }());

@@ -25,7 +25,8 @@ apiRouter.use(function(req, res, next) {
         return res.status(403).send({success:false, message:"can't authenticate token"})
       }
       else {
-        req.decoded = decoded
+        console.log("decoding token", decoded);
+        req.decoded = JSON.stringify(decoded)
         next()
       }
     })
@@ -34,6 +35,8 @@ apiRouter.use(function(req, res, next) {
     return res.status(403).send({success: false, message: "no token provided"})
   }
 })
+apiRouter.route('/users')
+    .get(ctrl.userCtrl.getAll)
 
 apiRouter.route('/businesses')
     .get(ctrl.mapiCtrl.getAll)
@@ -43,5 +46,11 @@ apiRouter.route('/businesses/:id')
     .get(ctrl.mapiCtrl.getSingle)
     .put(ctrl.mapiCtrl.update)
     .delete(ctrl.mapiCtrl.destroy)
+
+apiRouter.route('/me')
+    .get(function (req, res){
+      console.log("passed decoded info", req.decoded);
+      res.json(req.decoded)
+    })
 
 module.exports = apiRouter

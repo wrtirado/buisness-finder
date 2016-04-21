@@ -1,16 +1,22 @@
 ;(function () {
   'use strict'
-  angular.module('mapigatorApp', ['controllers', 'ui.router', 'myFactory', 'ngMap'])
+  angular.module('mapigatorApp', ['controllers', 'ui.router', 'myFactory', 'ngMap', 'authService', 'loginCtrl'])
     .config(routerConfig)
 
-  routerConfig.$inject = ['$stateProvider', '$urlRouterProvider']
+  routerConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$httpProvider']
 
-  function routerConfig ($stateProvider, $urlRouterProvider) {
+  function routerConfig ($stateProvider, $urlRouterProvider, $httpProvider) {
+
+    $httpProvider.interceptors.push('AuthInterceptor')
+
     $stateProvider
-      .state('home', {
+      .state('logIn', {
         url: '/',
-        templateUrl: '/html/home.html',
-        controller: "mapController as mapCtrl"
+        templateUrl: '/html/log-in.html'
+      })
+      .state('signUp', {
+        url: '/signUp',
+        templateUrl: '/html/sign-up.html'
       })
       .state('addBusiness', {
         url: '/addBusiness',
@@ -27,6 +33,7 @@
         templateUrl: '/html/addBusinessSuccess.html',
         controller: "mapController as mapCtrl"
       })
+
       $urlRouterProvider.otherwise('/')
   }
 }())

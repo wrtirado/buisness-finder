@@ -1,0 +1,70 @@
+<div class="row green lighten-4">
+
+
+
+    <div class="homeImg slider col s12">
+        <ul class="slides">
+            <li>
+                <img src="../img/scroll-image-1.jpg">
+                <div class="caption center-align">
+                    <h1>Local Shops</h1>
+                </div>
+            </li>
+            <li>
+                <img src="../img/scroll-image-2.jpg">
+                <div class="caption left-align">
+                    <h1>Personal Health</h1>
+                </div>
+            </li>
+            <li>
+                <img src="../img/scroll-image-3.jpg">
+                <div class="caption right-align">
+                    <h1>Your Beautiful City</h1>
+                </div>
+            </li>
+            <li>
+                <img src="../img/scroll-image-4.jpg">
+                <div class="caption center-align">
+                    <h1>Family!</h1>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="row homeContent green lighten-3">
+        <div class="col s12 m12 l12">
+            <div class="container">
+                <h1>Login</h1>
+
+                <form ng-submit="lCtrl.doLogin()">
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control validate" ng-model="lCtrl.loginData.email">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" ng-model="lCtrl.loginData.password">
+                    </div>
+
+                    <div class="alert alert-danger" ng-if="lCtrl.error">
+                        {{ login.error }}
+                    </div>
+
+                    <button  type="submit" class="btn btn-block btn-primary">Login</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.slider').slider({
+                full_width: true,
+                height: 500
+            });
+        });
+    </script>
+</div>

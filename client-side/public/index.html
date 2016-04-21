@@ -15,7 +15,7 @@
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="./css/main.css">
   </head>
-  <body class="green lighten-4" ng-controller="mapController as mapCtrl">
+  <body class="green lighten-4" ng-controller="loginController as lCtrl">
 
   <header>
     <div class="navbar-fixed">
@@ -23,8 +23,10 @@
         <div class="nav-wrapper">
           <a ui-sref="home" class="brand-logo center green-text">MapiGator</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a class="green-text" href="">Sign In</a></li>
-            <li><a class="green-text" href="">Sign Up</a></li>
+            <li ng-if="!lCtrl.loggedIn"><a class="green-text" href="">Log In</a></li>
+            <li ng-if="!lCtrl.loggedIn"><a class="green-text" href="">Sign Up</a></li>
+            <li ng-if="lCtrl.loggedIn"><a class="green-text" href="">Hello, {{lCtrl.loggedInUser.firstName}}</a></li>
+            <li ng-if="lCtrl.loggedIn"><a class="green-text" ng-click="lCtrl.doLogout()">Logout</a></li>
           </ul>
         </div>
       </nav>
@@ -41,5 +43,7 @@
   <script type="text/javascript" src="js/app.js"></script>
   <script type="text/javascript" src="js/controller.js"></script>
   <script type="text/javascript" src="js/factory.js"></script>
+  <script type="text/javascript" src="js/auth-service.js"></script>
+  <script type="text/javascript" src="js/loginController.js"></script>
   </body>
 </html>
