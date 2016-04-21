@@ -4,9 +4,9 @@
     angular.module('loginCtrl', [])
         .controller('loginController', loginController)
 
-    loginController.$inject = ['Auth', '$location', '$rootScope']
+    loginController.$inject = ['Auth', '$location', '$rootScope', '$state']
 
-    function loginController(Auth, $location, $rootScope) {
+    function loginController(Auth, $location, $rootScope, $state) {
         var lCtrl = this
 
         lCtrl.loggedIn = Auth.isLoggedIn()
@@ -14,17 +14,19 @@
         $rootScope.$on('$stateChangeSuccess', function(){
           lCtrl.loggedIn = Auth.isLoggedIn()
           console.log("State Changed!=========== Am I logged in?",lCtrl.loggedIn);
-          if(lCtrl.loggedIn){
-            Auth.getUser()
-              .then(function(response){
-                lCtrl.loggedInUser = JSON.parse(response.data)
+          if($state.current.name != 'signUp' || $state.current.name != 'logIn'){
+            console.log("state check");
+            if(lCtrl.loggedIn){
+              Auth.getUser()
+                .then(function(response){
+                  lCtrl.loggedInUser = JSON.parse(response.data)
 
-                console.log("Data from /me route", typeof lCtrl.loggedInUser)
-              })
-          }else{
-            $location.path('/')
-          }
-
+                  console.log("Data from /me route", typeof lCtrl.loggedInUser)
+                })
+              }else{
+                $location.path('/')
+              }
+            }
         })
 
         lCtrl.doLogin = function(){

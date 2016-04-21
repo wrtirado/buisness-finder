@@ -3,6 +3,7 @@
   'use strict'
   angular.module('myFactory', [])
     .factory('businessFactory', businessFactory)
+    .factory('userFactory', userFactory)
 
   businessFactory.$inject = ['$http']
 
@@ -49,8 +50,7 @@
     apiUrl = 'api/v1/users'
 
     userData.create = function(user) {
-      var result = $http.post(apiUrl, user)
-      return result
+       return $http.post(apiUrl, user)
     }
 
     return userData

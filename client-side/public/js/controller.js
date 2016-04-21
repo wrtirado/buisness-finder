@@ -4,10 +4,12 @@
     angular.module('controllers', [])
         .controller('mapController', mapController)
 
-    mapController.$inject = ['businessFactory', 'NgMap', '$state']
+    mapController.$inject = ['businessFactory', 'NgMap', '$state','userFactory']
 
-    function mapController(businessFactory, NgMap, $state) {
+    function mapController(businessFactory, NgMap, $state,userFactory) {
         var mapCtrl = this
+        mapCtrl.newUser = {}
+        
             // Seting up ng-Map
         NgMap.getMap().then(function(map) {
             console.log(map.getCenter());
@@ -114,12 +116,13 @@
             }
         }
         // Begin functionality for the users schema
-        mapCtrl.newUser = {}
 
-        mapCtrl.addUser = function(user){
-          userFactory.create(user)
+
+        mapCtrl.addUser = function(){
+          console.log("Sending user data to api", mapCtrl.newUser)
+          userFactory.create(mapCtrl.newUser)
               .then(function(res){
-                $state.go('')
+                $state.go('logIn')
               })
         }
 

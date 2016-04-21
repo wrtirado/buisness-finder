@@ -16,7 +16,8 @@
       })
       .state('signUp', {
         url: '/signUp',
-        templateUrl: '/html/sign-up.html'
+        templateUrl: '/html/sign-up.html',
+        controller: "mapController as mapCtrl"
       })
       .state('addBusiness', {
         url: '/addBusiness',

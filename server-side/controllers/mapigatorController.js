@@ -87,6 +87,7 @@ module.exports = {
     },
     userCtrl: {
         create: function(req, res) {
+          console.log("creating new user in db:", req.body)
             var user = new db.User(req.body)
             user.save(function(err, user) {
                 if (err) {

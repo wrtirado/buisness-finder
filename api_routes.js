@@ -10,7 +10,9 @@ apiRouter.route('/signIn')
 
 apiRouter.route('/users')
     .post(ctrl.userCtrl.create)
-    .get(ctrl.userCtrl.getAll)
+
+    apiRouter.route('/users')
+        .get(ctrl.userCtrl.getAll)
 
 apiRouter.use(function(req, res, next) {
   // 1 - let's check everywhere for the user's token
@@ -35,8 +37,7 @@ apiRouter.use(function(req, res, next) {
     return res.status(403).send({success: false, message: "no token provided"})
   }
 })
-apiRouter.route('/users')
-    .get(ctrl.userCtrl.getAll)
+
 
 apiRouter.route('/businesses')
     .get(ctrl.mapiCtrl.getAll)

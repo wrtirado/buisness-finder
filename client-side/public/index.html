@@ -23,7 +23,7 @@
         <div class="nav-wrapper">
           <a ui-sref="home" class="brand-logo center green-text">MapiGator</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li ng-if="!lCtrl.loggedIn"><a class="green-text" href="">Log In</a></li>
+            <li ng-if="!lCtrl.loggedIn"><a class="green-text" ui-sref="logIn">Log In</a></li>
             <li ng-if="!lCtrl.loggedIn"><a class="green-text" href="">Sign Up</a></li>
             <li ng-if="lCtrl.loggedIn"><a class="green-text" href="">Hello, {{lCtrl.loggedInUser.firstName}}</a></li>
             <li ng-if="lCtrl.loggedIn"><a class="green-text" ng-click="lCtrl.doLogout()">Logout</a></li>
