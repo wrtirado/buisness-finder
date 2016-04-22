@@ -10,12 +10,23 @@
         var mapCtrl = this
         mapCtrl.newUser = {}
 
-        console.log(mapCtrl);
+        
 
             // Seting up ng-Map
         NgMap.getMap().then(function(map) {
             console.log(map.getCenter());
-        });
+
+            mapCtrl.showCustomMarker= function(evt, id) {
+              console.log('args', arguments)
+
+              console.log(map.customMarkers, evt, id)
+            map.customMarkers[id].setVisible(true)
+            map.customMarkers[id].setPosition(this.getPosition())
+          }
+          mapCtrl.closeCustomMarker= function(evt, id) {
+            map.customMarkers[id].setVisible(false)
+          }
+        })
 
         mapCtrl.googleMapsUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-LboVyW-B4forwoDfDsVYNw8blYlEu0&callback=initMap"
 

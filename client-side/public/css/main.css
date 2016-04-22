@@ -59,3 +59,13 @@ h1 {
   background-size: cover;
   height: 93vh;
 }
+
+.businessMapInfo {
+  height: 250px;
+  width: 350px;
+  position: relative;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
