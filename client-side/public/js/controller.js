@@ -9,7 +9,9 @@
     function mapController(businessFactory, NgMap, $state,userFactory) {
         var mapCtrl = this
         mapCtrl.newUser = {}
-        
+
+        console.log(mapCtrl);
+
             // Seting up ng-Map
         NgMap.getMap().then(function(map) {
             console.log(map.getCenter());
@@ -81,6 +83,7 @@
 
         mapCtrl.userSelectedBusinessOptions = []
 
+
         mapCtrl.includeOptions = function(event) {
             var i = $.inArray(event.target.name, mapCtrl.userSelectedBusinessOptions)
             if (i > -1) {
@@ -92,23 +95,37 @@
 
         }
 
+        mapCtrl.disableCheckbox = function(){
+          console.log("running the disable function");
+          setTimeout(function(){
+            console.log("setting timeout");
+            $('.filterCheckBox').attr('disabled', false)
+          }, 500)
+          $('.filterCheckBox').attr('disabled', true)
+        }
+
+
+
 
         mapCtrl.businessFilter = function(business) {
-            if (mapCtrl.userSelectedBusinessOptions.length > 0) {
+            var selectedBusinessOptions = angular.copy(mapCtrl.userSelectedBusinessOptions)
+            if (selectedBusinessOptions.length > 0) {
+
                 var matchedOptionsInBizz = 0
                 for (var i = 0; i < business.options.length; i++) {
-                  // console.log("Array Check:"+business.options[i]+"Result: "+ $.inArray(business.options[i], mapCtrl.userSelectedBusinessOptions)+" Compare Array:"+ mapCtrl.userSelectedBusinessOptions);
-                    if ($.inArray(business.options[i], mapCtrl.userSelectedBusinessOptions) >= 0) {
+                  // console.log("Array Check:"+business.options[i]+"Result: "+ $.inArray(business.options[i], selectedBusinessOptions)+" Compare Array:"+ selectedBusinessOptions);
+                    if ($.inArray(business.options[i], selectedBusinessOptions) >= 0) {
                         matchedOptionsInBizz++
                     }
                 }
                 // console.log("OprionsCounter: "+ optionsCheckCounter + "business.length: "+  business.options.length);
                 // console.log("checked array",mapCtrl.businessOptions);
-                if (matchedOptionsInBizz >= mapCtrl.userSelectedBusinessOptions.length ){
+                if (matchedOptionsInBizz >= selectedBusinessOptions.length ){
+                  console.log(business.name)
                   return business
                 }
                 else {
-                  return
+                  return false
                 }
             }else{
 
@@ -125,6 +142,8 @@
                 $state.go('logIn')
               })
         }
+
+
 
     }
 }());

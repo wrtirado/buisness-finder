@@ -32,7 +32,8 @@ module.exports = {
                         consol.log(err)
                       }
                       else{
-                        db.Bizz.findOneAndUpdate({ _id: business._id}, { $set:{ lat: res.latitude, long: res.longitude}}, function(error, business2){
+                        console.log(res);
+                        db.Bizz.findOneAndUpdate({ _id: business._id}, { $set:{ lat: res[0].latitude, long: res[0].longitude}}, function(error, business2){
                           if(error){
                             console.log(error)
                           }

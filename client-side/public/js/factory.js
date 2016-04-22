@@ -19,7 +19,7 @@
     businessData.create = function(business) {
       console.log('2 - client: Calling the http verb \'post\', and as a result is crossing the divide over to the server side. More specifically, it is looking at where I defined the api_routes, and where this specific route is pointing within the mapigatorController!', business)
       var result = $http.post(apiUrl, business)
-      console.log('5 - client: running inside the factory.js file')
+      console.log('5 - client: running inside the factory.js file', result)
       return result
     }
 
