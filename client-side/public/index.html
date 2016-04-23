@@ -25,7 +25,7 @@
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li ng-if="!lCtrl.loggedIn"><a class="green-text" ui-sref="logIn">Log In</a></li>
             <li ng-if="!lCtrl.loggedIn"><a class="green-text" href="">Sign Up</a></li>
-            <li ng-if="lCtrl.loggedIn"><a class="green-text" href="">Hello, {{lCtrl.loggedInUser.firstName}}</a></li>
+            <li ng-if="lCtrl.loggedIn" class="green-text">Hello, {{lCtrl.loggedInUser.firstName}}</li>
             <li ng-if="lCtrl.loggedIn"><a class="green-text" ng-click="lCtrl.doLogout()">Logout</a></li>
           </ul>
         </div>

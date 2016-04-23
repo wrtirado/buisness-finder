@@ -1,8 +1,8 @@
 <!-- Google Maps API Key = " AIzaSyBO-LboVyW-B4forwoDfDsVYNw8blYlEu0 " -->
-<div class="row" style="height: 97vw;">
+<div class="row" style="height: 90vh;">
 
 
-    <div class="col s3 green lighten-5">
+    <div class="col s3 green lighten-5 mapSettings">
         <div class="row">
             <div class="col s12">
                 <form action="#">
@@ -11,27 +11,27 @@
                     <div class="emptyBox"></div>
                     <input placeholder="Filter Restaurants" type="text" ng-model="bizzText" name="name" value="" />
                     <p>
-                        <input class="filterCheckBox" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Gluten Free" id="gluten-free" />
+                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Gluten Free" id="gluten-free" />
                         <label for="gluten-free">Gluten Free</label>
                     </p>
                     <p>
-                        <input class="filterCheckBox" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Dairy Free" id="dairy-free" />
+                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Dairy Free" id="dairy-free" />
                         <label for="dairy-free">Dairy Free</label>
                     </p>
                     <p>
-                        <input class="filterCheckBox" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Vegan" id="vegan" />
+                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Vegan" id="vegan" />
                         <label for="vegan">Vegan</label>
                     </p>
                     <p>
-                        <input class="filterCheckBox" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Handicap Accessible" id="handicap-accessible" />
+                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Handicap Accessible" id="handicap-accessible" />
                         <label for="handicap-accessible">Handicap Accessible</label>
                     </p>
                     <p>
-                        <input class="filterCheckBox" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Free WiFi" id="free-wifi" />
+                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Free WiFi" id="free-wifi" />
                         <label for="free-wifi">Free WiFi</label>
                     </p>
                     <p>
-                        <input class="filterCheckBox" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Kid Friendly" id="kid-friendly" />
+                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Kid Friendly" id="kid-friendly" />
                         <label for="kid-friendly">Kid Friendly</label>
                     </p>
                 </form>

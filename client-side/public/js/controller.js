@@ -140,7 +140,6 @@
                 // console.log("OprionsCounter: "+ optionsCheckCounter + "business.length: "+  business.options.length);
                 // console.log("checked array",mapCtrl.businessOptions);
                 if (matchedOptionsInBizz >= selectedBusinessOptions.length ){
-                  console.log(business.name)
                   return business
                 }
                 else {
