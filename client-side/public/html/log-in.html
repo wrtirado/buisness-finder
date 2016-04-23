@@ -29,42 +29,117 @@
                 </div>
             </li>
         </ul>
-    </div>
-        <div class="col s12 m12 l12">
-            <div class="container">
-                <h1>Login</h1>
-
-                <form ng-submit="lCtrl.doLogin()">
-
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control validate" ng-model="lCtrl.loginData.email">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" class="form-control" ng-model="lCtrl.loginData.password">
-                    </div>
-
-                    <div class="alert alert-danger" ng-if="lCtrl.error">
-                        {{ login.error }}
-                    </div>
-
-                    <button type="submit" class="btn btn-block btn-primary">Login</button>
-                    <div class="emptyBox"></div>
-                    <button ui-sref="signUp" type="button" class="btn btn-block btn-primary">Sign Up</button>
-
-                </form>
+        <div class="emptyBox"></div>
+        <div class="emptyBox"></div>
+        <div class="emptyBox"></div>
+        <div class="row">
+            <div class="col s5 offset-s3">
+                <button href="#modal1" type="button" class="btn-large btn-block btn-primary modal-trigger2">Login</button>
+            </div>
+            <div class="col s4">
+                <button href="#modal2" type="button" class="btn-large btn-block btn-primary modal-trigger1">Sign Up</button>
             </div>
         </div>
+    </div>
+    <div class="col s12 m12 l12 hide-on-med-and-up">
+        <div class="container">
+            <h1>Login</h1>
 
+            <form ng-submit="lCtrl.doLogin()">
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control validate" ng-model="lCtrl.loginData.email">
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" ng-model="lCtrl.loginData.password">
+                </div>
+
+                <div class="alert alert-danger" ng-if="lCtrl.error">
+                    {{ login.error }}
+                </div>
+
+                <button type="submit" class="btn btn-block btn-primary">Login</button>
+                <div class="emptyBox"></div>
+                <button ui-sref="signUp" type="button" class="btn btn-block btn-primary">Sign Up</button>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- modal structure -->
+    <div id="modal1" class="modal">
+      <div class="container">
+          <h1>Login</h1>
+          <form ng-submit="lCtrl.doLogin()">
+              <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" class="form-control validate" ng-model="lCtrl.loginData.email">
+              </div>
+
+              <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" class="form-control" ng-model="lCtrl.loginData.password">
+              </div>
+              <button type="submit" class="btn btn-block btn-primary modal-close">Login</button>
+              <div class="emptyBox"></div>
+              <div class="alert alert-danger" ng-if="lCtrl.error">
+                  {{ login.error }}
+              </div>
+          </form>
+      </div>
+    </div>
+
+    <!-- modal structure -->
+    <div id="modal2" class="modal">
+        <div class="col s12 m12 l12">
+            <h1>Sign Up</h1>
+            <div class="row">
+                <form class="col s12" ng-submit="mapCtrl.addUser()">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input ng-model="mapCtrl.newUser.firstName" id="first_name" type="text" class="validate">
+                            <label for="first_name">First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input ng-model="mapCtrl.newUser.lastName" id="last_name" type="text" class="validate">
+                            <label for="last_name">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input ng-model="mapCtrl.newUser.userName" id="user_name" type="text" class="validate">
+                            <label for="user_name">Username</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input ng-model="mapCtrl.newUser.email" id="email" type="email" class="validate">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input ng-model="mapCtrl.newUser.password" id="password" type="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="waves-effect waves-light btn-large modal-close">Create User</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
 
     <script type="text/javascript">
         $(document).ready(function() {
             $('.slider').slider({
                 full_width: true,
-                height: 500
+                height: 750
             });
+
+            $('.modal-trigger1').leanModal();
+            $('.modal-trigger2').leanModal();
         });
     </script>
 </div>

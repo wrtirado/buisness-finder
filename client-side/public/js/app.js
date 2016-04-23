@@ -12,7 +12,8 @@
     $stateProvider
       .state('logIn', {
         url: '/',
-        templateUrl: '/html/log-in.html'
+        templateUrl: '/html/log-in.html',
+        controller: "mapController as mapCtrl"
       })
       .state('signUp', {
         url: '/signUp',
