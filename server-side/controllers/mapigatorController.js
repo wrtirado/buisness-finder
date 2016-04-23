@@ -75,9 +75,7 @@ module.exports = {
         destroy: function(req, res) {
             console.log('3 - serverSide: running inside the mapigatorController.js file')
             var id = req.params.id
-            db.Bizz.remove({
-                _id: id
-            }, function(err) {
+            db.Bizz.remove({_id: id}, function(err) {
                 if (err) res.json(err)
                 console.log("4 - serverSide: running inside the mapigatorController.js file --- Business Deleted!!!")
                 res.json({
@@ -87,6 +85,19 @@ module.exports = {
         }
     },
     userCtrl: {
+
+
+        destroy: function(req, res) {
+          var id = req.params.id
+          db.User.remove({_id: id}, function(err) {
+            if(err){
+              res.json(err)
+            }
+            else{
+              res.json({message: "Deleted User"})
+            }
+          })
+        },
         create: function(req, res) {
           console.log("creating new user in db:", req.body)
             var user = new db.User(req.body)

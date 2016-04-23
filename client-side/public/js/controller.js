@@ -9,8 +9,9 @@
     function mapController(businessFactory, NgMap, $state,userFactory) {
         var mapCtrl = this
         mapCtrl.newUser = {}
-
-        
+        mapCtrl.lat = 40.0170642
+        mapCtrl.long = -105.220111
+        mapCtrl.zoom = 17
 
             // Seting up ng-Map
         NgMap.getMap().then(function(map) {
@@ -26,6 +27,13 @@
           mapCtrl.closeCustomMarker= function(evt, id) {
             map.customMarkers[id].setVisible(false)
           }
+
+          mapCtrl.centerMapOnMarker = function(business) {
+            mapCtrl.lat = business.lat
+            mapCtrl.long = business.long
+            mapCtrl.zoom = 17
+          }
+
         })
 
         mapCtrl.googleMapsUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-LboVyW-B4forwoDfDsVYNw8blYlEu0&callback=initMap"
