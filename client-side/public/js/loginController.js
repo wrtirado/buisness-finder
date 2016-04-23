@@ -15,6 +15,7 @@
           lCtrl.loggedIn = Auth.isLoggedIn()
           console.log("State Changed!=========== Am I logged in?",lCtrl.loggedIn);
           if($state.current.name === 'map'){
+            console.log(lCtrl.onMap);
             lCtrl.onMap = true
           }
           else{lCtrl.onMap = false}
