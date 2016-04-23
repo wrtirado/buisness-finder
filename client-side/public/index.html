@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html ng-app="mapigatorApp">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>MapiGator</title>
-    <meta name="viewport" content="initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1">
 
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
@@ -14,36 +15,98 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="./css/main.css">
-  </head>
-  <body class="green lighten-4" ng-controller="loginController as lCtrl">
+</head>
 
-  <header>
-    <div class="navbar-fixed">
-      <nav class="white navHeight">
-        <div class="nav-wrapper">
-          <a ui-sref="home" class="brand-logo center green-text">MapiGator</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li ng-if="!lCtrl.loggedIn"><a class="green-text" ui-sref="logIn">Log In</a></li>
-            <li ng-if="!lCtrl.loggedIn"><a class="green-text" href="">Sign Up</a></li>
-            <li ng-if="lCtrl.loggedIn" class="green-text">Hello, {{lCtrl.loggedInUser.firstName}}</li>
-            <li ng-if="lCtrl.loggedIn"><a class="green-text" ng-click="lCtrl.doLogout()">Logout</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-  </header>
+<body class="green lighten-4" ng-controller="loginController as lCtrl">
+
+    <header>
+        <div class="navbar-fixed">
+            <nav class="white">
+                <div class="nav-wrapper">
+                    <a ui-sref="home" class="brand-logo center green-text">MapiGator</a>
+                    <ul id="nav-mobile" class="right hide-on-small-only">
+                        <li ng-if="!lCtrl.loggedIn"><a class="green-text" ui-sref="logIn">Log In</a></li>
+                        <li ng-if="!lCtrl.loggedIn"><a class="green-text" href="">Sign Up</a></li>
+                        <li ng-if="lCtrl.loggedIn" class="green-text">Hello, {{lCtrl.loggedInUser.firstName}}</li>
+                        <li ng-if="lCtrl.loggedIn"><a class="green-text" ng-click="lCtrl.doLogout()">Logout</a></li>
+                    </ul>
+
+                    <ul id="slide-out1" class="side-nav hide-on-med-and-up">
+                        <li ng-if="!lCtrl.loggedIn"><a class="green-text" ui-sref="logIn">Log In</a></li>
+                        <li ng-if="!lCtrl.loggedIn"><a class="green-text" href="">Sign Up</a></li>
+                        <li ng-if="lCtrl.loggedIn" style="text-align: center;" class="green-text">Hello, {{lCtrl.loggedInUser.firstName}}</li>
+                        <li ng-if="lCtrl.loggedIn"><a class="green-text" ng-click="lCtrl.doLogout()">Logout</a></li>
+                        <li class="divider"></li>
+                    </ul>
 
 
-  <main>
-    <div ui-view></div>
-  </main>
 
-  <footer></footer>
+                    <ul id="slide-out2" class="side-nav hide-on-med-and-up">
+                        <div ng-if="lCtrl.onMap" class="row" ng-controller="mapController as mapCtrl">
+                            <div class="col s12">
+                                <form action="#">
+                                    <div class="emptyBox"></div>
+                                    <a ui-sref="addBusiness" class="waves-effect waves-light btn-large">Add A Business</a>
+                                    <div class="emptyBox"></div>
+                                    <input placeholder="Filter Restaurants" type="text" ng-model="bizzText" name="name" value="" />
+                                    <p>
+                                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Gluten Free" id="gluten-free" />
+                                        <label for="gluten-free">Gluten Free</label>
+                                    </p>
+                                    <p>
+                                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Dairy Free" id="dairy-free" />
+                                        <label for="dairy-free">Dairy Free</label>
+                                    </p>
+                                    <p>
+                                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Vegan" id="vegan" />
+                                        <label for="vegan">Vegan</label>
+                                    </p>
+                                    <p>
+                                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Handicap Accessible" id="handicap-accessible" />
+                                        <label for="handicap-accessible">Handicap Accessible</label>
+                                    </p>
+                                    <p>
+                                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Free WiFi" id="free-wifi" />
+                                        <label for="free-wifi">Free WiFi</label>
+                                    </p>
+                                    <p>
+                                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Kid Friendly" id="kid-friendly" />
+                                        <label for="kid-friendly">Kid Friendly</label>
+                                    </p>
+                                </form>
+                                <div ng-repeat="business in mapCtrl.businesses | filter: mapCtrl.businessFilter | filter: bizzText" class="card green lighten-2">
+                                    <div class="card-content white-text">
+                                        <span class="card-title">{{business.name}}</span>
+                                        <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">map</i></a>
 
-  <script type="text/javascript" src="js/app.js"></script>
-  <script type="text/javascript" src="js/controller.js"></script>
-  <script type="text/javascript" src="js/factory.js"></script>
-  <script type="text/javascript" src="js/auth-service.js"></script>
-  <script type="text/javascript" src="js/loginController.js"></script>
-  </body>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                    </ul>
+                    <a href="#" data-activates="slide-out2" class="button-collapse2 right hide-on-med-and-up"><i class="green-text material-icons right">search</i></a>
+                    <a href="#" data-activates="slide-out1" class="button-collapse1 left hide-on-med-and-up"><i class="green-text material-icons right">reorder</i></a>
+                  </div>
+                </nav>
+              </div>
+            </header>
+
+            <script type="text/javascript">
+            $(".button-collapse1").sideNav();
+            $(".button-collapse2").sideNav({edge: 'right'});
+            </script>
+
+    <main>
+        <div ui-view></div>
+    </main>
+
+    <footer></footer>
+
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controller.js"></script>
+    <script type="text/javascript" src="js/factory.js"></script>
+    <script type="text/javascript" src="js/auth-service.js"></script>
+    <script type="text/javascript" src="js/loginController.js"></script>
+</body>
+
 </html>

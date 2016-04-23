@@ -4,9 +4,9 @@
     angular.module('controllers', [])
         .controller('mapController', mapController)
 
-    mapController.$inject = ['businessFactory', 'NgMap', '$state','userFactory']
+    mapController.$inject = ['businessFactory', 'NgMap', '$state','userFactory', "$rootScope"]
 
-    function mapController(businessFactory, NgMap, $state,userFactory) {
+    function mapController(businessFactory, NgMap, $state, userFactory, $rootScope) {
         var mapCtrl = this
         mapCtrl.newUser = {}
         mapCtrl.lat = 40.0170642
@@ -104,6 +104,7 @@
 
 
         mapCtrl.includeOptions = function(event) {
+          console.log("event being passed from includeOptions",event);
             var i = $.inArray(event.target.name, mapCtrl.userSelectedBusinessOptions)
             if (i > -1) {
                 mapCtrl.userSelectedBusinessOptions.splice(i, 1)
@@ -119,12 +120,9 @@
           setTimeout(function(){
             console.log("setting timeout");
             $('.filterCheckBox').attr('disabled', false)
-          }, 500)
+          }, 650)
           $('.filterCheckBox').attr('disabled', true)
         }
-
-
-
 
         mapCtrl.businessFilter = function(business) {
             var selectedBusinessOptions = angular.copy(mapCtrl.userSelectedBusinessOptions)
@@ -132,13 +130,10 @@
 
                 var matchedOptionsInBizz = 0
                 for (var i = 0; i < business.options.length; i++) {
-                  // console.log("Array Check:"+business.options[i]+"Result: "+ $.inArray(business.options[i], selectedBusinessOptions)+" Compare Array:"+ selectedBusinessOptions);
                     if ($.inArray(business.options[i], selectedBusinessOptions) >= 0) {
                         matchedOptionsInBizz++
                     }
                 }
-                // console.log("OprionsCounter: "+ optionsCheckCounter + "business.length: "+  business.options.length);
-                // console.log("checked array",mapCtrl.businessOptions);
                 if (matchedOptionsInBizz >= selectedBusinessOptions.length ){
                   return business
                 }

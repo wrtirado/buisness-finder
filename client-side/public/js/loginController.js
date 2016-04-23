@@ -10,10 +10,14 @@
         var lCtrl = this
 
         lCtrl.loggedIn = Auth.isLoggedIn()
-
+        lCtrl.onMap = false
         $rootScope.$on('$stateChangeSuccess', function(){
           lCtrl.loggedIn = Auth.isLoggedIn()
           console.log("State Changed!=========== Am I logged in?",lCtrl.loggedIn);
+          if($state.current.name === 'map'){
+            lCtrl.onMap = true
+          }
+          else{lCtrl.onMap = false}
           if($state.current.name != 'signUp' || $state.current.name != 'logIn'){
             console.log("state check");
             if(lCtrl.loggedIn){
