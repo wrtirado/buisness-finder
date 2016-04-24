@@ -56,6 +56,12 @@ h1 {
   background-image: url("../img/celebration-image.jpg");
   background-size: cover;
   height: 93vh;
+  position: relative;
+}
+
+.aBSuccessButtonDiv {
+  position: relative;
+  top: 70vh
 }
 
 .businessMapInfo {

@@ -1,28 +1,24 @@
 <!-- Add Business Page -->
-<div class="green lighten-5 addBP">
-  <div class="emptyBox"></div>
-  <div class="emptyBox"></div>
-  <div class="emptyBox"></div>
-  <div class="bPHeader">
-    <h1>Business Sign Up Form</h1></div>
+<div class="green lighten-4 addBP">
+  <div class="bPHeader"><h1>Business Sign Up Form</h1></div>
   <div class="row">
     <form class="col s12" ng-submit="mapCtrl.addBusiness(mapCtrl.newBusiness)">
       <div class="row">
-        <div class="input-field col s8 offset-s2">
+        <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
           <i class="material-icons prefix">mode_edit</i>
           <input ng-model="mapCtrl.newBusiness.name" id="name" type="text" class="validate">
           <label for="name">Name</label>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s8 offset-s2">
+        <div class="input-field col l8 m8 s12 offset-l2 offset-m2">
           <i class="material-icons prefix">mode_edit</i>
           <input ng-model="mapCtrl.newBusiness.address" id="address" type="text" class="validate" />
           <label for="address">Address</label>
         </div>
       </div>
       <div class="row">
-        <div class="col s2 offset-s2">
+        <div class="col l2 m2 s6 offset-l2 offset-m2">
           <p>
             <input ng-click="mapCtrl.addOptions($event)" type="checkbox" class="filled-in" name="Gluten Free" id="gluten-free" />
             <label for="gluten-free">Gluten Free</label>
@@ -32,31 +28,31 @@
             <label for="dairy-free">Dairy Free</label>
           </p>
           <p>
+            <input ng-click="mapCtrl.addOptions($event)" type="checkbox" class="filled-in" name="Kid Friendly" id="kid-friendly" />
+            <label for="kid-friendly">Kid Friendly</label>
+          </p>
+          <p>
             <input ng-click="mapCtrl.addOptions($event)" type="checkbox" class="filled-in" name="Vegan" id="vegan" />
             <label for="vegan">Vegan</label>
           </p>
-        </div>
-        <div class="col s2 offset-s2">
-          <p>
-            <input ng-click="mapCtrl.addOptions($event)" type="checkbox" class="filled-in" name="Handicap Accessible" id="handicap-accessible" />
-            <label for="handicap-accessible">Handicap Accessible</label>
-          </p>
+
           <p>
             <input ng-click="mapCtrl.addOptions($event)" type="checkbox" class="filled-in" name="Free WiFi" id="free-wifi" />
             <label for="free-wifi">Free WiFi</label>
           </p>
+
           <p>
-            <input ng-click="mapCtrl.addOptions($event)" type="checkbox" class="filled-in" name="Kid Friendly" id="kid-friendly" />
-            <label for="kid-friendly">Kid Friendly</label>
+            <input ng-click="mapCtrl.addOptions($event)" type="checkbox" class="filled-in" name="Handicap Accessible" id="handicap-accessible" />
+            <label for="handicap-accessible">Handicap Accessible</label>
           </p>
         </div>
-      </div>
-      <div class="row">
-        <div class="col s6 offset-s2">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">mode_edit</i>
-            <textarea ng-model="mapCtrl.newBusiness.description" id="icon_prefix2" class="materialize-textarea"></textarea>
-            <label for="icon_prefix2">Description</label>
+        <div class="row">
+          <div class="col l6 m8 s12">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">mode_edit</i>
+              <textarea ng-model="mapCtrl.newBusiness.description" id="icon_prefix2" class="materialize-textarea"></textarea>
+              <label for="icon_prefix2">Description</label>
+            </div>
           </div>
         </div>
       </div>

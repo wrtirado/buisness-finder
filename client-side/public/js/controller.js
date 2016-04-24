@@ -1,10 +1,16 @@
+//#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#//
+//#                                         #//
+//# Title: Setting up the mapController     #//
+//# Description: Set up for the main        #//
+//#     mapController                       #//
+//#                                         #//
+//#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#//
 (function() {
     'use strict';
-
     angular.module('controllers', [])
-        .controller('mapController', mapController)
+        .controller('mapController', mapController) //<-- creating the controller called mapController
 
-    mapController.$inject = ['businessFactory', 'NgMap', '$state','userFactory', "$rootScope"]
+    mapController.$inject = ['businessFactory', 'NgMap', '$state','userFactory', "$rootScope"] // <-- again, protecting against minification
 
     function mapController(businessFactory, NgMap, $state, userFactory, $rootScope) {
         var mapCtrl = this
@@ -17,6 +23,7 @@
         NgMap.getMap().then(function(map) {
             console.log(map.getCenter());
 
+            // Function that will show custom markers on the map when the basic marker is clicked
             mapCtrl.showCustomMarker= function(evt, id) {
               console.log('args', arguments)
 
@@ -24,10 +31,11 @@
             map.customMarkers[id].setVisible(true)
             map.customMarkers[id].setPosition(this.getPosition())
           }
+          // Function that will close custom marker when the custom marker is clicked
           mapCtrl.closeCustomMarker= function(evt, id) {
             map.customMarkers[id].setVisible(false)
           }
-
+          // Function that, whe the 'show on map' button is clicked, will center the map on that businesses marker
           mapCtrl.centerMapOnMarker = function(business) {
             mapCtrl.lat = business.lat
             mapCtrl.long = business.long
