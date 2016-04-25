@@ -73,3 +73,9 @@ h1 {
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
 }
+
+.mapSearchBtn {
+  position: relative;
+  bottom: 90px;
+  left: 20px;
+}

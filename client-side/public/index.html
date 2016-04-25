@@ -41,7 +41,7 @@
 
 
 
-                    <ul id="slide-out2" class="side-nav hide-on-med-and-up">
+                    <!-- <ul id="slide-out2" class="side-nav hide-on-med-and-up">
                         <div ng-if="lCtrl.onMap" class="row" ng-controller="mapController as mapCtrl">
                             <div class="col s12">
                                 <form action="#">
@@ -83,8 +83,8 @@
                                 </div>
                             </div>
                           </div>
-                    </ul>
-                    <a ng-show="lCtrl.loggedIn" data-activates="slide-out2" class="button-collapse2 right hide-on-med-and-up"><i class="green-text material-icons right">search</i></a>
+                    </ul> -->
+                    <!-- <a ng-show="lCtrl.loggedIn" data-activates="slide-out2" class="button-collapse2 right hide-on-med-and-up"><i class="green-text material-icons right">search</i></a> -->
                     <a data-activates="slide-out1" class="button-collapse1 left hide-on-med-and-up"><i class="green-text material-icons right">reorder</i></a>
                   </div>
                 </nav>
@@ -93,7 +93,9 @@
 
             <script type="text/javascript">
             $(".button-collapse1").sideNav();
-            $(".button-collapse2").sideNav({edge: 'right'});
+            $(".button-collapse2").sideNav({edge: 'right'})
+            // $('.button-collapse3').click(function() {alert('test')})
+            // $('.button-collapse3').sideNav({edge: 'right'})
             </script>
 
     <main>

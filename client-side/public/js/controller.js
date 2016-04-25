@@ -110,9 +110,8 @@
 
         mapCtrl.userSelectedBusinessOptions = []
 
-
         mapCtrl.includeOptions = function(event) {
-          console.log("event being passed from includeOptions",event);
+          console.log("event being passed from includeOptions", event);
             var i = $.inArray(event.target.name, mapCtrl.userSelectedBusinessOptions)
             if (i > -1) {
                 mapCtrl.userSelectedBusinessOptions.splice(i, 1)
@@ -120,7 +119,6 @@
 
                 mapCtrl.userSelectedBusinessOptions.push(event.target.name);
             }
-
         }
 
         mapCtrl.disableCheckbox = function(){
@@ -132,7 +130,13 @@
           $('.filterCheckBox').attr('disabled', true)
         }
 
+        mapCtrl.isChecked = false
         mapCtrl.businessFilter = function(business) {
+          console.log('userSelectedBusinessOptions', mapCtrl.userSelectedBusinessOptions)
+          // if(event.currentTarget.checked === true){
+          //   mapCtrl.isChecked = true
+          // }
+          // else{mapCtrl.isChecked = false}
             var selectedBusinessOptions = angular.copy(mapCtrl.userSelectedBusinessOptions)
             if (selectedBusinessOptions.length > 0) {
 

@@ -5,43 +5,49 @@
     <div class="col l3 m6 green lighten-5 mapSettings hide-on-small-only">
         <div class="row">
             <div class="col s12">
-                <form action="#">
-                  <div class="emptyBox"></div>
-                    <a ui-sref="addBusiness" class="waves-effect waves-light btn-large">Submit New Business</a>
-                    <div class="emptyBox"></div>
-                    <input placeholder="Filter Restaurants" type="text" ng-model="bizzText" name="name" value="" />
-                    <p>
-                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Gluten Free" id="gluten-free" />
-                        <label for="gluten-free">Gluten Free</label>
-                    </p>
-                    <p>
-                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Dairy Free" id="dairy-free" />
-                        <label for="dairy-free">Dairy Free</label>
-                    </p>
-                    <p>
-                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Vegan" id="vegan" />
-                        <label for="vegan">Vegan</label>
-                    </p>
-                    <p>
-                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Handicap Accessible" id="handicap-accessible" />
-                        <label for="handicap-accessible">Handicap Accessible</label>
-                    </p>
-                    <p>
-                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Free WiFi" id="free-wifi" />
-                        <label for="free-wifi">Free WiFi</label>
-                    </p>
-                    <p>
-                        <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Kid Friendly" id="kid-friendly" />
-                        <label for="kid-friendly">Kid Friendly</label>
-                    </p>
-                </form>
-                <hr>
+                <!-- <form action="#"> -->
+                <div class="emptyBox"></div>
+                <a ui-sref="addBusiness" class="waves-effect waves-light btn-large">Submit New Business</a>
+                <div class="emptyBox"></div>
+                <input placeholder="Filter Restaurants" type="text" ng-model="bizzText" name="name" value="" />
+                <p>
+                    <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Gluten Free" id="gluten-free" />
+                    <label for="gluten-free">Gluten Free</label>
+                </p>
+                <p>
+                    <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Dairy Free" id="dairy-free" />
+                    <label for="dairy-free">Dairy Free</label>
+                </p>
+                <p>
+                    <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Vegan" id="vegan" />
+                    <label for="vegan">Vegan</label>
+                </p>
+                <p>
+                    <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Handicap Accessible" id="handicap-accessible" />
+                    <label for="handicap-accessible">Handicap Accessible</label>
+                </p>
+                <p>
+                    <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Free WiFi" id="free-wifi" />
+                    <label for="free-wifi">Free WiFi</label>
+                </p>
+                <p>
+                    <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox()" type="checkbox" name="Kid Friendly" id="kid-friendly" />
+                    <label for="kid-friendly">Kid Friendly</label>
+                </p>
+                <!-- </form> -->
+                <hr/>
                 <div ng-repeat="bizz in mapCtrl.businesses | filter: mapCtrl.businessFilter | filter: bizzText" class="card green lighten-2">
                     <div class="card-content white-text">
                         <span class="card-title">{{bizz.name}}</span>
                         <h6>{{bizz.address}}</h6>
-                        <p>Description: <br>{{bizz.description}}<hr></p>
-                        <p>Options: <br>{{bizz.options}}<hr></p>
+                        <p>Description:
+                            <br>{{bizz.description}}
+                            <hr>
+                        </p>
+                        <p>Options:
+                            <br>{{bizz.options}}
+                            <hr>
+                        </p>
 
                     </div>
 
@@ -56,6 +62,50 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Structure -->
+  <div id="modal3" class="side-nav">
+    <div class="col s12 modal-content">
+      {{mapCtrl.userSelectedBusinessOptions.indexOf["Gluten Free"]}}
+        <form action="#">
+            <div class="emptyBox"></div>
+            <a ui-sref="addBusiness" class="waves-effect waves-light btn-large">Add A Business</a>
+            <div class="emptyBox"></div>
+            <input placeholder="Filter Restaurants" type="text" ng-model="bizzText" name="name" value="" />
+            <p>
+                <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox($event)" ng-checked="" type="checkbox" name="Gluten Free" id="gluten-free-in-modal" />
+                <label for="gluten-free-in-modal">Gluten Free</label>
+            </p>
+            <p>
+                <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox($event)" ng-checked="" type="checkbox" name="Dairy Free" id="dairy-free-in-modal" />
+                <label for="dairy-free-in-modal">Dairy Free</label>
+            </p>
+            <p>
+                <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox($event)" ng-checked="" type="checkbox" name="Vegan" id="vegan-in-modal" />
+                <label for="vegan-in-modal">Vegan</label>
+            </p>
+            <p>
+                <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox($event)" ng-checked="" type="checkbox" name="Handicap Accessible" id="handicap-accessible-in-modal" />
+                <label for="handicap-accessible-in-modal">Handicap Accessible</label>
+            </p>
+            <p>
+                <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox($event)" ng-checked="" type="checkbox" name="Free WiFi" id="free-wifi-in-modal" />
+                <label for="free-wifi-in-modal">Free WiFi</label>
+            </p>
+            <p>
+                <input class="filterCheckBox filled-in" ng-click="mapCtrl.includeOptions($event); mapCtrl.disableCheckbox($event)" ng-checked="" type="checkbox" name="Kid Friendly" id="kid-friendly-in-modal" />
+                <label for="kid-friendly-in-modal">Kid Friendly</label>
+            </p>
+        </form>
+        <div ng-repeat="business in mapCtrl.businesses | filter: mapCtrl.businessFilter | filter: bizzText" class="card green lighten-2">
+            <div class="card-content white-text">
+                <h6 class="card-title">{{business.name}}</h6>
+                <a class="btn-floating btn waves-effect waves-light red"><i class="material-icons left">map</i></a>
+            </div>
+        </div>
+    </div>
+  </div>
+
 
     <!-- MAP ON THE RIGHT SIDE OF THE WEB PAGE WILL IS GOING TO BUILD -->
     <div id="map" class="col l9 m6 s12" map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{mapCtrl.googleMapsUrl}}">
@@ -80,29 +130,14 @@
                 </div>
             </custom-marker>
 
-
         </ng-map>
     </div>
+    <button class="mapSearchBtn btn-floating btn-large waves-effect waves-light red hide-on-med-and-up button-collapse3" data-activates="modal3">
+      <i class="large material-icons">search</i></button>
 </div>
 
-
-
-
-
-
-
-
-<!-- <script type="text/javascript">
-  var map;
-
-  function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {
-        lat: 40.017064,
-        lng: -105.220111
-      },
-      zoom: 17
-    });
-  }
+<script type="text/javascript">
+// $('.button-collapse3').click(function() {alert('test')})
+// $('.button-collapse3').css({'color': 'blue'})
+$('.button-collapse3').sideNav({edge: 'right'})
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-LboVyW-B4forwoDfDsVYNw8blYlEu0&callback=initMap"></script> -->
