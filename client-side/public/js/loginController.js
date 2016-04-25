@@ -40,7 +40,7 @@
             .then(function(response){
               if(response.status === 200){
                 console.log("in login if statement--------")
-                $location.path('/map')
+                $location.path('/home')
               }
               else{
                 lCtrl.error = response.message

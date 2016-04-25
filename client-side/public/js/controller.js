@@ -8,16 +8,36 @@
 (function() {
     'use strict';
     angular.module('controllers', [])
+        .factory('checkboxFactory', checkboxFactory)
         .controller('mapController', mapController) //<-- creating the controller called mapController
 
-    mapController.$inject = ['businessFactory', 'NgMap', '$state','userFactory', "$rootScope"] // <-- again, protecting against minification
+        function checkboxFactory(){
+          var chkbxFactory = {}
 
-    function mapController(businessFactory, NgMap, $state, userFactory, $rootScope) {
+          chkbxFactory.glutenFree
+          chkbxFactory.dairyFree
+          chkbxFactory.Vegan
+          chkbxFactory.handicapAccessible
+          chkbxFactory.freeWifi
+          chkbxFactory.kidFriendly
+
+          chkbxFactory.options = []
+          return chkbxFactory
+        }
+
+    mapController.$inject = ['businessFactory', 'NgMap', '$state','userFactory', "$rootScope", 'checkboxFactory'] // <-- again, protecting against minification
+
+    function mapController(businessFactory, NgMap, $state, userFactory, $rootScope, checkboxFactory) {
         var mapCtrl = this
+        console.log("Main controller starting up");
+        console.log("CheckboxFactory options", checkboxFactory.options);
+        // checkboxFactory.test = true
         mapCtrl.newUser = {}
-        mapCtrl.lat = 40.0170642
-        mapCtrl.long = -105.220111
-        mapCtrl.zoom = 17
+        mapCtrl.lat = 40.0150
+        mapCtrl.long = -105.2705
+        mapCtrl.zoom = 14
+        mapCtrl.checkboxes = checkboxFactory
+
 
             // Seting up ng-Map
         NgMap.getMap().then(function(map) {
@@ -47,7 +67,7 @@
         mapCtrl.googleMapsUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-LboVyW-B4forwoDfDsVYNw8blYlEu0&callback=initMap"
 
         mapCtrl.newBusiness = {
-            options: []
+            options: checkboxFactory.options
         }
 
         businessFactory.getAll()
@@ -60,14 +80,15 @@
         mapCtrl.addOptions = function(event) {
             if (!event.target.checked) {
                 console.log("Erasing Event")
-                mapCtrl.newBusiness.options.splice(mapCtrl.newBusiness.options.indexOf(event.target.name), 1)
-                console.log("Erased", mapCtrl.newBusiness.options)
+                chkbxFactory.options.splice(chkbxFactory.options.indexOf(event.target.name), 1)
+                console.log("Erased", chkbxFactory.options)
 
             } else {
 
                 console.log("Adding an option:", event.target.name)
-                mapCtrl.newBusiness.options.push(event.target.name)
+                chkbxFactory.options.push(event.target.name)
             }
+
         }
 
         mapCtrl.addBusiness = function(business) {
@@ -108,17 +129,18 @@
                 })
         }
 
-        mapCtrl.userSelectedBusinessOptions = []
+        // mapCtrl.userSelectedBusinessOptions = checkboxFactory.options
 
         mapCtrl.includeOptions = function(event) {
           console.log("event being passed from includeOptions", event);
-            var i = $.inArray(event.target.name, mapCtrl.userSelectedBusinessOptions)
+            var i = $.inArray(event.target.name, checkboxFactory.options)
             if (i > -1) {
-                mapCtrl.userSelectedBusinessOptions.splice(i, 1)
+                checkboxFactory.options.splice(i, 1)
             } else {
 
-                mapCtrl.userSelectedBusinessOptions.push(event.target.name);
+                checkboxFactory.options.push(event.target.name);
             }
+            console.log("factory options:", checkboxFactory.options);
         }
 
         mapCtrl.disableCheckbox = function(){
@@ -132,12 +154,12 @@
 
         mapCtrl.isChecked = false
         mapCtrl.businessFilter = function(business) {
-          console.log('userSelectedBusinessOptions', mapCtrl.userSelectedBusinessOptions)
+          // console.log('userSelectedBusinessOptions', mapCtrl.userSelectedBusinessOptions)
           // if(event.currentTarget.checked === true){
           //   mapCtrl.isChecked = true
           // }
           // else{mapCtrl.isChecked = false}
-            var selectedBusinessOptions = angular.copy(mapCtrl.userSelectedBusinessOptions)
+            var selectedBusinessOptions = angular.copy(checkboxFactory.options)
             if (selectedBusinessOptions.length > 0) {
 
                 var matchedOptionsInBizz = 0

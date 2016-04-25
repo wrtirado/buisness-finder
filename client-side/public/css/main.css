@@ -30,6 +30,17 @@ h1 {
   top: 65vh;
   text-align: center;
 }
+
+.homePageImage {
+  height: 60vh;
+  background-image: url('../img/home-image.jpg');
+  background-size: cover;
+}
+
+.homePageContent {
+  height: 50vh
+}
+
 /* Navbar Styles */
 .navHeight{
   height: 7vh;

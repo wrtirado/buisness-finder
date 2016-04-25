@@ -28,6 +28,11 @@
         templateUrl: '/html/log-in.html',
         controller: "mapController as mapCtrl"
       })
+      .state('home', { // <-- Home page you see when you initally log in
+        url: '/home',
+        templateUrl: '/html/home.html',
+        controller: "mapController as mapCtrl"
+      })
       .state('signUp', { // <-- The page that mobile users will get sent to if they choose the sign up button
         url: '/signUp',
         templateUrl: '/html/sign-up.html',

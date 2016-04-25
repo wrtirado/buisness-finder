@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col l12 m12 hide-on-small-only homePageImage">
+    <div class="row">
+        <div class="col l4 m4">
+          <h1>Welcome to Restaurant Finder!</h1>
+        </div>
+        <div style="text-align: right;" class="col l4 m4 offset-l4 offset-m4">
+          <h1>Find what you want based on what you need</h1>
+        </div>
+    </div>
+  </div>
+  <div class="col l12 m12 s12 homePageContent">
+    <div class="center-align">
+      <h1>Search Restaurants in Boulder</h1>
+    </div>
+      <div class="col s12 center-align">
+          <!-- <form action="#"> -->
+          <p>
+              <input class="filterCheckBox filled-in" ng-model="mapCtrl.checkboxes.glutenFreeCheckBox" ng-click="mapCtrl.includeOptions($event)" type="checkbox" name="Gluten Free" id="gluten-free3" />
+              <label for="gluten-free3">Gluten Free</label>
+
+              <input class="filterCheckBox filled-in" ng-model="mapCtrl.checkboxes.dairyFreeCheckBox" ng-click="mapCtrl.includeOptions($event)" type="checkbox" name="Dairy Free" id="dairy-free3" />
+              <label for="dairy-free3">Dairy Free</label>
+
+              <input class="filterCheckBox filled-in" ng-model="mapCtrl.checkboxes.veganCheckBox" ng-click="mapCtrl.includeOptions($event)" type="checkbox" name="Vegan" id="vegan3" />
+              <label for="vegan3">Vegan</label>
+
+              <input class="filterCheckBox filled-in" ng-model="mapCtrl.checkboxes.handicapAccessibleCheckBox" ng-click="mapCtrl.includeOptions($event)" type="checkbox" name="Handicap Accessible" id="handicap-accessible3" />
+              <label for="handicap-accessible3">Handicap Accessible</label>
+
+              <input class="filterCheckBox filled-in" ng-model="mapCtrl.checkboxes.freeWifiCheckBox" ng-click="mapCtrl.includeOptions($event)" type="checkbox" name="Free WiFi" id="free-wifi3" />
+              <label for="free-wifi3">Free WiFi</label>
+
+              <input class="filterCheckBox filled-in" ng-model="mapCtrl.checkboxes.kidFriendlyCheckBox" ng-click="mapCtrl.includeOptions($event)" type="checkbox" name="Kid Friendly" id="kid-friendly3" />
+              <label for="kid-friendly3">Kid Friendly</label>
+          </p>
+          <!-- </form> -->
+      </div>
+      <div class="center-align">
+        <a ui-sref="map" class="waves-effect waves-light btn-large"><i class="material-icons right">trending_flat</i>View Results</a>
+      </div>
+  </div>
+
+
+
+
+
+
+
+</div>
