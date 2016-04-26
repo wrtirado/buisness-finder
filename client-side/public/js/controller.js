@@ -35,9 +35,9 @@
         mapCtrl.newUser = {}
         mapCtrl.lat = 40.0150
         mapCtrl.long = -105.2705
-        mapCtrl.zoom = 14
+        mapCtrl.zoom = 15
         mapCtrl.checkboxes = checkboxFactory
-
+        mapCtrl.businesses = []
 
             // Seting up ng-Map
         NgMap.getMap().then(function(map) {
@@ -80,13 +80,13 @@
         mapCtrl.addOptions = function(event) {
             if (!event.target.checked) {
                 console.log("Erasing Event")
-                chkbxFactory.options.splice(chkbxFactory.options.indexOf(event.target.name), 1)
-                console.log("Erased", chkbxFactory.options)
+                mapCtrl.newBusiness.options.splice(mapCtrl.newBusiness.options.indexOf(event.target.name), 1)
+                console.log("Erased", mapCtrl.newBusiness.options)
 
             } else {
 
                 console.log("Adding an option:", event.target.name)
-                chkbxFactory.options.push(event.target.name)
+                mapCtrl.newBusiness.options.push(event.target.name)
             }
 
         }
@@ -121,6 +121,8 @@
                 })
         }
 
+        console.log("Array of businesses that the map page is looping over", mapCtrl.businesses);
+
         mapCtrl.updateBusiness = function(business) {
             console.log('1 - Client: ng-click for updating a business: calling the funciton witing the front end factory')
             businessFactory.update(business._id, business)
@@ -154,11 +156,6 @@
 
         mapCtrl.isChecked = false
         mapCtrl.businessFilter = function(business) {
-          // console.log('userSelectedBusinessOptions', mapCtrl.userSelectedBusinessOptions)
-          // if(event.currentTarget.checked === true){
-          //   mapCtrl.isChecked = true
-          // }
-          // else{mapCtrl.isChecked = false}
             var selectedBusinessOptions = angular.copy(checkboxFactory.options)
             if (selectedBusinessOptions.length > 0) {
 
@@ -176,6 +173,9 @@
                 }
             }else{
 
+              return business
+            }
+            if(business.options.length < 1){
               return business
             }
         }
