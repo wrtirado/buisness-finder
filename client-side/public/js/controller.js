@@ -67,7 +67,7 @@
         mapCtrl.googleMapsUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBO-LboVyW-B4forwoDfDsVYNw8blYlEu0&callback=initMap"
 
         mapCtrl.newBusiness = {
-            options: checkboxFactory.options
+            options: []
         }
 
         businessFactory.getAll()
@@ -96,6 +96,7 @@
             businessFactory.create(business)
                 .then(function(res) {
                     console.log('6 - client: running inside the controller.js file --- end communication between client and server', res)
+                    mapCtrl.newBusiness.options = []
                     $state.go('success')
                 })
         }
