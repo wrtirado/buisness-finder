@@ -7,9 +7,11 @@ html, body {
 
 h1 {
   font-family: 'Raleway', sans-serif;
-  text-shadow: 0 0 5px black;
 }
 
+.shadowText {
+  text-shadow: 0 0 5px black;
+}
 
 .tall{
   height: 93vh;
