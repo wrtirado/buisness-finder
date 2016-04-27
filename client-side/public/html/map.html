@@ -44,10 +44,8 @@
                             <br>{{bizz.description}}
                             <hr>
                         </p>
-                        <p>Options:
-                            <br>{{bizz.options}}
-                            <hr>
-                        </p>
+                        <p>Options:</p>
+                        <li  ng-repeat="option in bizz.options">{{option}}</li>
 
                     </div>
 
@@ -114,11 +112,8 @@
                 <div class="businessMapInfo green lighten-5">
                     <h5>{{b.name}}</h5>
                     <h6>{{b.address}}</h6>
-                    <p>
-                        Options:
-                        <br>{{b.options}}
-                        <hr>
-                    </p>
+                    <p>Options:</p>
+                    <li  ng-repeat="option in b.options">{{option}}</li>
                     <p>
                         Description:
                         <br>{{b.description}}
